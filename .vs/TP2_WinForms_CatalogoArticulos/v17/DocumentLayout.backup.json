@@ -1,0 +1,40 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Kimberly\\Documents\\UTN\\TUP\\3. Cuatrimestre\\Programaci\u00F3n III\\4. Winforms\\TP2\\TP2_WinForms_CatalogoArticulos\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF364255-A8C3-45DB-86A4-CF32624AAAA4}|CatalogoArticulos.UI\\CatalogoArticulos.UI.csproj|c:\\users\\kimberly\\documents\\utn\\tup\\3. cuatrimestre\\programaci\u00F3n iii\\4. winforms\\tp2\\tp2_winforms_catalogoarticulos\\catalogoarticulos.ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{DF364255-A8C3-45DB-86A4-CF32624AAAA4}|CatalogoArticulos.UI\\CatalogoArticulos.UI.csproj|solutionrelative:catalogoarticulos.ui\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 108,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Kimberly\\Documents\\UTN\\TUP\\3. Cuatrimestre\\Programaci\u00F3n III\\4. Winforms\\TP2\\TP2_WinForms_CatalogoArticulos\\CatalogoArticulos.UI\\Form1.cs",
+              "RelativeDocumentMoniker": "CatalogoArticulos.UI\\Form1.cs",
+              "ToolTip": "C:\\Users\\Kimberly\\Documents\\UTN\\TUP\\3. Cuatrimestre\\Programaci\u00F3n III\\4. Winforms\\TP2\\TP2_WinForms_CatalogoArticulos\\CatalogoArticulos.UI\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "CatalogoArticulos.UI\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-03T17:38:51.707Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
