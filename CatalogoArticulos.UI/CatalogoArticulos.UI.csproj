@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Marca\UCMarcas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Marca\UCMarcas.Designer.cs">
+      <DependentUpon>UCMarcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principal\FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Marca\UCMarcas.resx">
+      <DependentUpon>UCMarcas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principal\FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>

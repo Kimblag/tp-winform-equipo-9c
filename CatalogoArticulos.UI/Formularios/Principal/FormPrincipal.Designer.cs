@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.panelContenido = new System.Windows.Forms.Panel();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
             this.btnArticulos = new System.Windows.Forms.Button();
-            this.panelContenido = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,8 +45,17 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(180, 588);
+            this.panelMenu.Size = new System.Drawing.Size(180, 643);
             this.panelMenu.TabIndex = 0;
+            // 
+            // panelContenido
+            // 
+            this.panelContenido.BackColor = System.Drawing.Color.White;
+            this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenido.Location = new System.Drawing.Point(180, 0);
+            this.panelContenido.Name = "panelContenido";
+            this.panelContenido.Size = new System.Drawing.Size(961, 643);
+            this.panelContenido.TabIndex = 1;
             // 
             // btnCategorias
             // 
@@ -79,6 +88,7 @@
             this.btnMarcas.TabIndex = 1;
             this.btnMarcas.Text = "Marcas";
             this.btnMarcas.UseVisualStyleBackColor = true;
+            this.btnMarcas.Click += new System.EventHandler(this.btnMarcas_Click);
             // 
             // btnArticulos
             // 
@@ -96,25 +106,17 @@
             this.btnArticulos.Text = "Artículos";
             this.btnArticulos.UseVisualStyleBackColor = true;
             // 
-            // panelContenido
-            // 
-            this.panelContenido.BackColor = System.Drawing.Color.White;
-            this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenido.Location = new System.Drawing.Point(180, 0);
-            this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(753, 588);
-            this.panelContenido.TabIndex = 1;
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(933, 588);
+            this.ClientSize = new System.Drawing.Size(1141, 643);
             this.Controls.Add(this.panelContenido);
             this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1157, 682);
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo de artículos";
