@@ -11,7 +11,7 @@ La aplicación permite:
 * Administrar Marcas y Categorías.
 * Asociar una o varias imágenes a cada artículo.
 
-El objetivo principal es aplicar buenas prácticas de separación de esponsabilidades y trabajar con una arquitectura en capas, usando ADO.NET para el acceso a la base de datos.
+El objetivo principal es aplicar buenas prácticas de separación de responsabilidades y trabajar con una arquitectura en capas, usando ADO.NET para el acceso a la base de datos.
 
 ---
 
@@ -20,11 +20,10 @@ El proyecto está organizado en capas, cada una en un proyecto separado dentro d
 
 | Proyecto | Contenido | Explicación |
 |----------|-----------|------------|
-| **CatalogoArticulos.UI** | Formularios de WinForms | Interfaz de usuario. Solo muestra datos y recibe entradas. Llama a los Servicios para realizar operaciones. |
-| **CatalogoArticulos.Dominio** | Entidades (Articulo, Marca, Categoria, Imagen) | Modelo de negocio: clases que representan los datos y sus relaciones. |
-| **CatalogoArticulos.Datos** | Repositorios e Interfaces | Acceso a la base de datos con ADO.NET. |
-| **CatalogoArticulos.Servicios** | Servicios e Interfaces | Lógica de aplicación: validaciones simples y coordinación de llamadas a los repositorios. |
-| **CatalogoArticulos.Comun** | Funciones compartidas, Helpers | Código reutilizable entre capas (validadores, constantes). |
+| **CatalogoArticulos.UI** | Formularios de WinForms | Interfaz de usuario. Muestra datos y recibe entradas. Llama a las clases de la capa Negocio para realizar operaciones. |
+| **CatalogoArticulos.Dominio** | Entidades (Articulo, Marca, Categoria, Imagen) | Define las entidades principales del sistema. No contiene lógica de negocio ni acceso a base de datos. |
+| **CatalogoArticulos.Negocio** | Lógica de negocio + acceso a BD | Contiene métodos CRUD y reglas de negocio usando ADO.NET. La UI interactúa con esta capa para todas las operaciones. |
+| **CatalogoArticulos.Comun** | Helpers, validadores, utilidades | Código reutilizable entre capas, como validaciones de datos, funciones auxiliares o constantes. |
 
 
 Cada proyecto separado permite mantener el código organizado, controlar dependencias y facilita el antenimiento o cambios en el futuro.
@@ -43,17 +42,18 @@ Se muestra el diagrama de clases que representa el modelo de dominio. ** Pendien
 **Resumen del modelo:**  
 * Un Artículo pertenece a una Marca y a una Categoría.  
 * Un Artículo puede tener una o varias Imágenes.  
-* La relación entre entidades se refleja en el modelo de dominio, no en la UI ni en los repositorios.
+* Las relaciones se representan en el modelo de dominio, no en la UI ni directamente en las clases de negocio.
 
 
 ---
 
 ## Tecnologías y herramientas
-* .NET Framework 4.8
-* WinForms
-* ADO.NET
-* SQL Server
-* Git / GitHub para el control de versiones
+* Lenguaje: C#  
+* Framework: .NET Framework 4.8  
+* UI: Windows Forms  
+* Acceso a datos: ADO.NET  
+* Base de datos: SQL Server  
+* Control de versiones: Git / GitHub
 
 ---
 
@@ -61,22 +61,32 @@ Se muestra el diagrama de clases que representa el modelo de dominio. ** Pendien
 ```
 CatalogoArticulos.UI/
 ├── Formularios/
+│   ├── Articulos/
+│   ├── Marcas/
+│   └── Categorias/
 ├── Recursos/
 └── Program.cs
 
 CatalogoArticulos.Dominio/
 └── Entidades/
+├── Articulo.cs
+├── Marca.cs
+├── Categoria.cs
+└── Imagen.cs
 
-CatalogoArticulos.Datos/
-├── Interfaces/
-└── Repositorios/
-
-CatalogoArticulos.Servicios/
-├── Interfaces/
-└── Implementaciones/
+CatalogoArticulos.Negocio/
+├── Articulos/
+│   └── ArticuloNegocio.cs
+├── Marcas/
+│   └── MarcaNegocio.cs
+└── Categorias/
+└── CategoriaNegocio.cs
 
 CatalogoArticulos.Comun/
 └── Helpers/
+├── ValidadorTexto.cs
+├── ValidadorNumerico.cs
+└── ValidadorImagen.cs
 ```
 
 Hemos organizado cada carpeta con un propósito claro para cada una: UI solo para formularios, Dominio solo para entidades, Datos solo para acceso a base de datos, Servicios para lógica de aplicación, Comun para funciones compartidas.
