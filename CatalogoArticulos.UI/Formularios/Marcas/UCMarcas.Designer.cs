@@ -1,4 +1,4 @@
-﻿namespace CatalogoArticulos.UI.Formularios.Marca
+﻿namespace CatalogoArticulos.UI.Formularios.Marcas
 {
     partial class UCMarcas
     {
@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpContenedorMarcas = new System.Windows.Forms.TableLayoutPanel();
             this.lblTituloMarcas = new System.Windows.Forms.Label();
             this.tlpListadoMarcas = new System.Windows.Forms.TableLayoutPanel();
@@ -40,8 +38,6 @@
             this.btnEditarMarca = new System.Windows.Forms.Button();
             this.btnEliminarMarca = new System.Windows.Forms.Button();
             this.dgvMarcas = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tlpFiltrosMarca = new System.Windows.Forms.TableLayoutPanel();
             this.panelBotonesFiltros = new System.Windows.Forms.Panel();
             this.tlpBotonesFiltros = new System.Windows.Forms.TableLayoutPanel();
@@ -169,6 +165,7 @@
             this.btnAgregarMarca.TabIndex = 0;
             this.btnAgregarMarca.Text = "Agregar";
             this.btnAgregarMarca.UseVisualStyleBackColor = false;
+            this.btnAgregarMarca.Click += new System.EventHandler(this.btnAgregarMarca_Click);
             // 
             // btnEditarMarca
             // 
@@ -196,12 +193,10 @@
             // 
             this.dgvMarcas.AllowUserToAddRows = false;
             this.dgvMarcas.AllowUserToDeleteRows = false;
+            this.dgvMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMarcas.BackgroundColor = System.Drawing.Color.White;
             this.dgvMarcas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMarcas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
-            this.colDescripcion});
             this.dgvMarcas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMarcas.GridColor = System.Drawing.Color.LightGray;
             this.dgvMarcas.Location = new System.Drawing.Point(13, 63);
@@ -212,28 +207,6 @@
             this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMarcas.Size = new System.Drawing.Size(979, 658);
             this.dgvMarcas.TabIndex = 1;
-            // 
-            // colId
-            // 
-            this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.colId.DataPropertyName = "Id";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colId.DefaultCellStyle = dataGridViewCellStyle11;
-            this.colId.HeaderText = "Id";
-            this.colId.MaxInputLength = 50;
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            // 
-            // colDescripcion
-            // 
-            this.colDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colDescripcion.DataPropertyName = "Descripcion";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colDescripcion.DefaultCellStyle = dataGridViewCellStyle12;
-            this.colDescripcion.HeaderText = "Descripción";
-            this.colDescripcion.MaxInputLength = 250;
-            this.colDescripcion.Name = "colDescripcion";
-            this.colDescripcion.ReadOnly = true;
             // 
             // tlpFiltrosMarca
             // 
@@ -400,6 +373,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UCMarcas";
             this.Size = new System.Drawing.Size(1031, 891);
+            this.Load += new System.EventHandler(this.UCMarcas_Load);
             this.tlpContenedorMarcas.ResumeLayout(false);
             this.tlpContenedorMarcas.PerformLayout();
             this.tlpListadoMarcas.ResumeLayout(false);
@@ -443,8 +417,6 @@
         private System.Windows.Forms.Button btnEditarMarca;
         private System.Windows.Forms.Button btnEliminarMarca;
         private System.Windows.Forms.DataGridView dgvMarcas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDescripcion;
         private System.Windows.Forms.TableLayoutPanel tlpFiltrosMarca;
     }
 }

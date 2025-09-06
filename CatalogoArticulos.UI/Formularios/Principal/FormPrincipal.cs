@@ -1,4 +1,4 @@
-﻿using CatalogoArticulos.UI.Formularios.Marca;
+﻿using CatalogoArticulos.UI.Formularios.Marcas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

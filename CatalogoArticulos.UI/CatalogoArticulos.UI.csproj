@@ -46,10 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formularios\Marca\UCMarcas.cs">
+    <Compile Include="Formularios\Marcas\FormMarcaDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Marcas\FormMarcaDetalle.Designer.cs">
+      <DependentUpon>FormMarcaDetalle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Marcas\UCMarcas.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Formularios\Marca\UCMarcas.Designer.cs">
+    <Compile Include="Formularios\Marcas\UCMarcas.Designer.cs">
       <DependentUpon>UCMarcas.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Principal\FormPrincipal.cs">
@@ -60,7 +66,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\Marca\UCMarcas.resx">
+    <EmbeddedResource Include="Formularios\Marcas\FormMarcaDetalle.resx">
+      <DependentUpon>FormMarcaDetalle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Marcas\UCMarcas.resx">
       <DependentUpon>UCMarcas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principal\FormPrincipal.resx">
@@ -89,7 +98,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CatalogoArticulos.Comun\CatalogoArticulos.Comun.csproj">
+      <Project>{a380c39b-971b-4c18-b6dd-b8e708735b6e}</Project>
+      <Name>CatalogoArticulos.Comun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CatalogoArticulos.Dominio\CatalogoArticulos.Dominio.csproj">
+      <Project>{fef4c22d-e324-4a91-b8be-4412a9d5e190}</Project>
+      <Name>CatalogoArticulos.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CatalogoArticulos.Negocio\CatalogoArticulos.Negocio.csproj">
+      <Project>{c68bf4c4-e0f1-444d-8760-5066be431113}</Project>
+      <Name>CatalogoArticulos.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Recursos\iconArticulos.png" />
     <Content Include="Recursos\iconCategoria.png" />
