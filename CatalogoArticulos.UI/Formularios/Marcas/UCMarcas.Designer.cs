@@ -177,6 +177,7 @@
             this.btnEditarMarca.TabIndex = 1;
             this.btnEditarMarca.Text = "Editar";
             this.btnEditarMarca.UseVisualStyleBackColor = false;
+            this.btnEditarMarca.Click += new System.EventHandler(this.btnEditarMarca_Click);
             // 
             // btnEliminarMarca
             // 

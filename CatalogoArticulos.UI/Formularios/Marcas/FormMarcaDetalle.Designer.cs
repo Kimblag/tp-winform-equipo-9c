@@ -32,8 +32,8 @@
             this.lblDescripcionMarca = new System.Windows.Forms.Label();
             this.txtDescripcionMarca = new System.Windows.Forms.TextBox();
             this.flpBotonesMarca = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnGuardarMarca = new System.Windows.Forms.Button();
             this.btnCancelarMarca = new System.Windows.Forms.Button();
+            this.btnGuardarMarca = new System.Windows.Forms.Button();
             this.tlpMarcaDetalle.SuspendLayout();
             this.flpBotonesMarca.SuspendLayout();
             this.SuspendLayout();
@@ -95,17 +95,6 @@
             this.flpBotonesMarca.Size = new System.Drawing.Size(408, 50);
             this.flpBotonesMarca.TabIndex = 2;
             // 
-            // btnGuardarMarca
-            // 
-            this.btnGuardarMarca.Location = new System.Drawing.Point(193, 5);
-            this.btnGuardarMarca.Margin = new System.Windows.Forms.Padding(5);
-            this.btnGuardarMarca.Name = "btnGuardarMarca";
-            this.btnGuardarMarca.Size = new System.Drawing.Size(100, 30);
-            this.btnGuardarMarca.TabIndex = 0;
-            this.btnGuardarMarca.Text = "Guardar";
-            this.btnGuardarMarca.UseVisualStyleBackColor = true;
-            this.btnGuardarMarca.Click += new System.EventHandler(this.btnGuardarMarca_Click);
-            // 
             // btnCancelarMarca
             // 
             this.btnCancelarMarca.Location = new System.Drawing.Point(303, 5);
@@ -117,6 +106,17 @@
             this.btnCancelarMarca.UseVisualStyleBackColor = true;
             this.btnCancelarMarca.Click += new System.EventHandler(this.btnCancelarMarca_Click);
             // 
+            // btnGuardarMarca
+            // 
+            this.btnGuardarMarca.Location = new System.Drawing.Point(193, 5);
+            this.btnGuardarMarca.Margin = new System.Windows.Forms.Padding(5);
+            this.btnGuardarMarca.Name = "btnGuardarMarca";
+            this.btnGuardarMarca.Size = new System.Drawing.Size(100, 30);
+            this.btnGuardarMarca.TabIndex = 0;
+            this.btnGuardarMarca.Text = "Guardar";
+            this.btnGuardarMarca.UseVisualStyleBackColor = true;
+            this.btnGuardarMarca.Click += new System.EventHandler(this.btnGuardarMarca_Click);
+            // 
             // FormMarcaDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -126,13 +126,14 @@
             this.Controls.Add(this.tlpMarcaDetalle);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormMarcaDetalle";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Marca";
+            this.Load += new System.EventHandler(this.FormMarcaDetalle_Load);
             this.tlpMarcaDetalle.ResumeLayout(false);
             this.tlpMarcaDetalle.PerformLayout();
             this.flpBotonesMarca.ResumeLayout(false);

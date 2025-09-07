@@ -1,4 +1,5 @@
-﻿using CatalogoArticulos.Negocio;
+﻿using CatalogoArticulos.Dominio.Entidades;
+using CatalogoArticulos.Negocio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
 
         private void UCMarcas_Load(object sender, EventArgs e)
         {
+            cmbOrdenarMarca.SelectedIndex = 0;
             CargarListadoMarcas();
         }
 
@@ -32,7 +34,32 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
         private void btnAgregarMarca_Click(object sender, EventArgs e)
         {
             FormMarcaDetalle altaMarca = new FormMarcaDetalle();
-            altaMarca.ShowDialog();
+            DialogResult resultado = altaMarca.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CargarListadoMarcas();
+            }
+        }
+
+        private void btnEditarMarca_Click(object sender, EventArgs e)
+        {
+            if (dgvMarcas.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccioná una marca para editar.", 
+                    "Aviso", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            Marca marcaSeleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+            FormMarcaDetalle frmMarca = new FormMarcaDetalle(marcaSeleccionada);
+
+            if (frmMarca.ShowDialog() == DialogResult.OK)
+            {
+                CargarListadoMarcas();
+            }
         }
     }
 }

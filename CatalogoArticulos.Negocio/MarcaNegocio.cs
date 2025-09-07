@@ -14,19 +14,14 @@ namespace CatalogoArticulos.Negocio
         {
             List<Marca> marcas = new List<Marca>();
 
-            SqlConnection conexion = new SqlConnection();
-            SqlCommand comando = new SqlCommand();
+            AccesoDatos datos = new AccesoDatos();
             SqlDataReader lector;
 
             try
             {
-                conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true";
-                comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "SELECT Id, Descripcion FROM MARCAS";
-                comando.Connection = conexion;
-
-                conexion.Open();
-                lector = comando.ExecuteReader();
+                datos.DefinirConsulta("SELECT Id, Descripcion FROM MARCAS");
+                datos.EjecutarConsulta();
+                lector = datos.Lector;
 
                 while (lector.Read())
                 {
@@ -45,12 +40,47 @@ namespace CatalogoArticulos.Negocio
             }
             finally
             {
-                conexion.Close();
+                datos.CerrarConexion();
             }
         }
 
 
-         
+        public void agregar(Marca nuevaMarca)
+        {
+            AccesoDatos datos = new AccesoDatos();
 
+            try
+            {
+                datos.DefinirConsulta($"INSERT INTO MARCAS (Descripcion) VALUES('{nuevaMarca.Descripcion}')");
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
+
+        public void modificar(Marca marcaEditar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.DefinirConsulta($"UPDATE MARCAS SET Descripcion = '{marcaEditar.Descripcion}' WHERE Id = {marcaEditar.Id}");
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
