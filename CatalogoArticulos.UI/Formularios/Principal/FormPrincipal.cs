@@ -1,4 +1,5 @@
-﻿using CatalogoArticulos.UI.Formularios.Marcas;
+﻿using CatalogoArticulos.UI.Formularios.Categorias;
+using CatalogoArticulos.UI.Formularios.Marcas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,6 +30,15 @@ namespace CatalogoArticulos.UI.Formularios.Principal
             MarcarBotonActivo(btnMarcas);
         }
 
+        private UCCategorias vistaCategorias;
+        private void btnCategorias_Click_1(object sender, EventArgs e)
+        {
+            if (vistaCategorias == null)
+                vistaCategorias = new UCCategorias();
+
+            MostrarVista(vistaCategorias);
+            MarcarBotonActivo(btnCategorias);
+        }
 
         private void MostrarVista(UserControl vista)
         {
@@ -52,5 +62,7 @@ namespace CatalogoArticulos.UI.Formularios.Principal
             // marcamos el botón actual 
             botonActivo.BackColor = Color.WhiteSmoke;
         }
+
+      
     }
 }

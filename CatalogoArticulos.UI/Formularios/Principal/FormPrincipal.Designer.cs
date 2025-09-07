@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelContenido = new System.Windows.Forms.Panel();
             this.btnCategorias = new System.Windows.Forms.Button();
             this.btnMarcas = new System.Windows.Forms.Button();
             this.btnArticulos = new System.Windows.Forms.Button();
+            this.panelContenido = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,15 +47,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(180, 643);
             this.panelMenu.TabIndex = 0;
-            // 
-            // panelContenido
-            // 
-            this.panelContenido.BackColor = System.Drawing.Color.White;
-            this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenido.Location = new System.Drawing.Point(180, 0);
-            this.panelContenido.Name = "panelContenido";
-            this.panelContenido.Size = new System.Drawing.Size(961, 643);
-            this.panelContenido.TabIndex = 1;
             // 
             // btnCategorias
             // 
@@ -72,6 +63,7 @@
             this.btnCategorias.TabIndex = 2;
             this.btnCategorias.Text = "Categorías";
             this.btnCategorias.UseVisualStyleBackColor = true;
+            this.btnCategorias.Click += new System.EventHandler(this.btnCategorias_Click_1);
             // 
             // btnMarcas
             // 
@@ -105,6 +97,15 @@
             this.btnArticulos.TabIndex = 0;
             this.btnArticulos.Text = "Artículos";
             this.btnArticulos.UseVisualStyleBackColor = true;
+            // 
+            // panelContenido
+            // 
+            this.panelContenido.BackColor = System.Drawing.Color.White;
+            this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContenido.Location = new System.Drawing.Point(180, 0);
+            this.panelContenido.Name = "panelContenido";
+            this.panelContenido.Size = new System.Drawing.Size(961, 643);
+            this.panelContenido.TabIndex = 1;
             // 
             // FormPrincipal
             // 
