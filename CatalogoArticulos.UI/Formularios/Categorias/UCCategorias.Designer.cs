@@ -216,6 +216,7 @@
             this.btnEliminarCategoria.TabIndex = 2;
             this.btnEliminarCategoria.Text = "Eliminar";
             this.btnEliminarCategoria.UseVisualStyleBackColor = false;
+            this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
             // 
             // dgvCategoria
             // 

@@ -63,10 +63,25 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
             }
         }
 
+        private void btnEliminarCategoria_Click(object sender, EventArgs e)
+        {
+            CategoriaNegocio negocio = new CategoriaNegocio();
+            Categoria categoriaSeleccionada;
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¡Atención! Se eliminará la categoría seleccionada. ¿Desea continuar?", "Eliminar categoría", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                categoriaSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
+                negocio.eliminar(categoriaSeleccionada.Id);
+                CargarListadoCategorias();
 
 
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
     }
 
 }

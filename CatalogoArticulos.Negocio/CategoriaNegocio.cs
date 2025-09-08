@@ -83,5 +83,22 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
+
+        public void eliminar(int id)
+        {             AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.DefinirConsulta($"DELETE FROM CATEGORIAS WHERE Id = {id}");
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
     }
 }
