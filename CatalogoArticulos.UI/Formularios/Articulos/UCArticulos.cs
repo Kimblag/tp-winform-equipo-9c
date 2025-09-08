@@ -26,6 +26,9 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
         private void UCArticulos_Load(object sender, EventArgs e)
         {
             CargarListadoArticulos();
+            // engancho botones de filtros
+            btnAplicarFiltrosArticulo.Click += btnAplicarFiltrosArticulo_Click;
+            btnLimpiarFiltrosArticulo.Click += btnLimpiarFiltrosArticulo_Click;
         }
 
         private void CargarListadoArticulos()
@@ -163,5 +166,66 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 MostrarImagenActual();
             }
         }
+
+        private void btnAplicarFiltrosArticulo_Click(object sender, EventArgs e)
+        {
+            string campo = cmbCampoArticulo.SelectedItem?.ToString();
+            string criterio = cmbCriterioArticulo.SelectedItem?.ToString();
+            string valorTexto = txtValorArticulo.Text;
+
+            if (string.IsNullOrWhiteSpace(campo) || string.IsNullOrWhiteSpace(criterio) || string.IsNullOrWhiteSpace(valorTexto))
+            {
+                MessageBox.Show("Seleccioná Campo, Criterio y escribí un Valor.");
+                return;
+            }
+
+            List<Articulo> resultado = new List<Articulo>();
+
+            switch (campo)
+            {
+                case "Precio":
+                    decimal valor;
+                    if (!decimal.TryParse(valorTexto, out valor))
+                    {
+                        MessageBox.Show("Ingresá un número válido para Precio.");
+                        return;
+                    }
+
+                    switch (criterio)
+                    {
+                        case "Mayor que":
+                            resultado = articulos.Where(a => a.Precio > valor).ToList();
+                            break;
+
+                        case "Menor que":
+                            resultado = articulos.Where(a => a.Precio < valor).ToList();
+                            break;
+
+                        default:
+                            MessageBox.Show("Criterio no válido para Precio.");
+                            return;
+                    }
+                    break;
+
+             
+                default:
+                    MessageBox.Show("Campo no reconocido.");
+                    return;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = resultado;
+        }
+
+        private void btnLimpiarFiltrosArticulo_Click(object sender, EventArgs e)
+        {
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = articulos;
+        }
+
+
+       
+
+
     }
 }

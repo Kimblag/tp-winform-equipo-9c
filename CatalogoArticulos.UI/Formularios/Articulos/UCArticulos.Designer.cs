@@ -57,11 +57,11 @@
             this.lblCodigoArticulo = new System.Windows.Forms.Label();
             this.lblDescripcionArticulo = new System.Windows.Forms.Label();
             this.tlpImagenArticulo = new System.Windows.Forms.TableLayoutPanel();
+            this.pbImagenArticulo = new System.Windows.Forms.PictureBox();
             this.tlpNavegacionImagenArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.btnImagenAnterior = new System.Windows.Forms.Button();
             this.btnImagenSiguiente = new System.Windows.Forms.Button();
             this.lblIndiceImagen = new System.Windows.Forms.Label();
-            this.pbImagenArticulo = new System.Windows.Forms.PictureBox();
             this.tlpArticulos.SuspendLayout();
             this.tlpFiltrosArticulo.SuspendLayout();
             this.flpBotonesFiltrosArticulo.SuspendLayout();
@@ -72,8 +72,8 @@
             this.panelDetalleArticulo.SuspendLayout();
             this.tlpDatosArticulo.SuspendLayout();
             this.tlpImagenArticulo.SuspendLayout();
-            this.tlpNavegacionImagenArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenArticulo)).BeginInit();
+            this.tlpNavegacionImagenArticulo.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpArticulos
@@ -177,6 +177,13 @@
             // 
             this.cmbCampoArticulo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCampoArticulo.FormattingEnabled = true;
+            this.cmbCampoArticulo.Items.AddRange(new object[] {
+            "Codigo",
+            "Nombre",
+            "Descripcion",
+            "Precio",
+            "Marca",
+            "Categoria"});
             this.cmbCampoArticulo.Location = new System.Drawing.Point(5, 25);
             this.cmbCampoArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCampoArticulo.Name = "cmbCampoArticulo";
@@ -190,7 +197,9 @@
             this.cmbCriterioArticulo.Items.AddRange(new object[] {
             "Contiene",
             "Comienza con",
-            "Termina con"});
+            "Termina con",
+            "Mayor que",
+            "Menor que"});
             this.cmbCriterioArticulo.Location = new System.Drawing.Point(235, 25);
             this.cmbCriterioArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCriterioArticulo.Name = "cmbCriterioArticulo";
@@ -230,6 +239,7 @@
             this.btnLimpiarFiltrosArticulo.TabIndex = 1;
             this.btnLimpiarFiltrosArticulo.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosArticulo.UseVisualStyleBackColor = false;
+            this.btnLimpiarFiltrosArticulo.Click += new System.EventHandler(this.btnLimpiarFiltrosArticulo_Click);
             // 
             // btnAplicarFiltrosArticulo
             // 
@@ -240,6 +250,7 @@
             this.btnAplicarFiltrosArticulo.TabIndex = 0;
             this.btnAplicarFiltrosArticulo.Text = "Buscar";
             this.btnAplicarFiltrosArticulo.UseVisualStyleBackColor = true;
+            this.btnAplicarFiltrosArticulo.Click += new System.EventHandler(this.btnAplicarFiltrosArticulo_Click);
             // 
             // tlpListadoArticulo
             // 
@@ -484,6 +495,19 @@
             this.tlpImagenArticulo.Size = new System.Drawing.Size(276, 194);
             this.tlpImagenArticulo.TabIndex = 0;
             // 
+            // pbImagenArticulo
+            // 
+            this.pbImagenArticulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pbImagenArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbImagenArticulo.Location = new System.Drawing.Point(0, 0);
+            this.pbImagenArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.pbImagenArticulo.Name = "pbImagenArticulo";
+            this.pbImagenArticulo.Size = new System.Drawing.Size(276, 150);
+            this.pbImagenArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbImagenArticulo.TabIndex = 0;
+            this.pbImagenArticulo.TabStop = false;
+            // 
             // tlpNavegacionImagenArticulo
             // 
             this.tlpNavegacionImagenArticulo.ColumnCount = 3;
@@ -536,19 +560,6 @@
             this.lblIndiceImagen.Text = "1 / N";
             this.lblIndiceImagen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbImagenArticulo
-            // 
-            this.pbImagenArticulo.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.pbImagenArticulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImagenArticulo.Location = new System.Drawing.Point(0, 0);
-            this.pbImagenArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.pbImagenArticulo.Name = "pbImagenArticulo";
-            this.pbImagenArticulo.Size = new System.Drawing.Size(276, 150);
-            this.pbImagenArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbImagenArticulo.TabIndex = 0;
-            this.pbImagenArticulo.TabStop = false;
-            // 
             // UCArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -574,8 +585,8 @@
             this.tlpDatosArticulo.ResumeLayout(false);
             this.tlpDatosArticulo.PerformLayout();
             this.tlpImagenArticulo.ResumeLayout(false);
-            this.tlpNavegacionImagenArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenArticulo)).EndInit();
+            this.tlpNavegacionImagenArticulo.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
