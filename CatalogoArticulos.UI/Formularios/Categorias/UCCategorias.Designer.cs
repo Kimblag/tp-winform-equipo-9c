@@ -32,7 +32,7 @@
             this.tlpBuscarMarca = new System.Windows.Forms.TableLayoutPanel();
             this.lblBuscarCategoria = new System.Windows.Forms.Label();
             this.lblTituloCategoria = new System.Windows.Forms.Label();
-            this.tlpListadoMarcas = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpListadoCategoria = new System.Windows.Forms.TableLayoutPanel();
             this.tlpEncabezadoListado = new System.Windows.Forms.TableLayoutPanel();
             this.lblListadoCategoria = new System.Windows.Forms.Label();
             this.flpBotonesAcciones = new System.Windows.Forms.FlowLayoutPanel();
@@ -47,17 +47,17 @@
             this.btnAplicarFiltrosCategoria = new System.Windows.Forms.Button();
             this.tlpBotonesFiltros = new System.Windows.Forms.TableLayoutPanel();
             this.panelBotonesFiltros = new System.Windows.Forms.Panel();
-            this.tlpFiltrosMarca = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpFiltrosCategoria = new System.Windows.Forms.TableLayoutPanel();
             this.tlpContenedorCategoria = new System.Windows.Forms.TableLayoutPanel();
             this.tlpBuscarMarca.SuspendLayout();
-            this.tlpListadoMarcas.SuspendLayout();
+            this.tlpListadoCategoria.SuspendLayout();
             this.tlpEncabezadoListado.SuspendLayout();
             this.flpBotonesAcciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCategoria)).BeginInit();
             this.tlpOrdenarCategoria.SuspendLayout();
             this.tlpBotonesFiltros.SuspendLayout();
             this.panelBotonesFiltros.SuspendLayout();
-            this.tlpFiltrosMarca.SuspendLayout();
+            this.tlpFiltrosCategoria.SuspendLayout();
             this.tlpContenedorCategoria.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +72,7 @@
             this.txtBuscarCategoria.Name = "txtBuscarCategoria";
             this.txtBuscarCategoria.Size = new System.Drawing.Size(250, 25);
             this.txtBuscarCategoria.TabIndex = 1;
+            this.txtBuscarCategoria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarCategoria_KeyDown);
             // 
             // tlpBuscarMarca
             // 
@@ -118,21 +119,21 @@
             this.lblTituloCategoria.Text = "Gestión de categorías";
             this.lblTituloCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // tlpListadoMarcas
+            // tlpListadoCategoria
             // 
-            this.tlpListadoMarcas.ColumnCount = 1;
-            this.tlpListadoMarcas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpListadoMarcas.Controls.Add(this.tlpEncabezadoListado, 0, 0);
-            this.tlpListadoMarcas.Controls.Add(this.dgvCategoria, 0, 1);
-            this.tlpListadoMarcas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpListadoMarcas.Location = new System.Drawing.Point(13, 144);
-            this.tlpListadoMarcas.Name = "tlpListadoMarcas";
-            this.tlpListadoMarcas.Padding = new System.Windows.Forms.Padding(10);
-            this.tlpListadoMarcas.RowCount = 2;
-            this.tlpListadoMarcas.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpListadoMarcas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpListadoMarcas.Size = new System.Drawing.Size(1173, 481);
-            this.tlpListadoMarcas.TabIndex = 2;
+            this.tlpListadoCategoria.ColumnCount = 1;
+            this.tlpListadoCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpListadoCategoria.Controls.Add(this.tlpEncabezadoListado, 0, 0);
+            this.tlpListadoCategoria.Controls.Add(this.dgvCategoria, 0, 1);
+            this.tlpListadoCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpListadoCategoria.Location = new System.Drawing.Point(13, 144);
+            this.tlpListadoCategoria.Name = "tlpListadoCategoria";
+            this.tlpListadoCategoria.Padding = new System.Windows.Forms.Padding(10);
+            this.tlpListadoCategoria.RowCount = 2;
+            this.tlpListadoCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpListadoCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpListadoCategoria.Size = new System.Drawing.Size(1173, 481);
+            this.tlpListadoCategoria.TabIndex = 2;
             // 
             // tlpEncabezadoListado
             // 
@@ -293,6 +294,8 @@
             this.btnLimpiarFiltrosCategoria.TabIndex = 5;
             this.btnLimpiarFiltrosCategoria.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosCategoria.UseVisualStyleBackColor = false;
+            this.btnLimpiarFiltrosCategoria.Click += new System.EventHandler(this.btnLimpiarFiltrosCategoria_Click);
+
             // 
             // btnAplicarFiltrosCategoria
             // 
@@ -305,6 +308,7 @@
             this.btnAplicarFiltrosCategoria.TabIndex = 4;
             this.btnAplicarFiltrosCategoria.Text = "Aplicar filtros";
             this.btnAplicarFiltrosCategoria.UseVisualStyleBackColor = false;
+            this.btnAplicarFiltrosCategoria.Click += new System.EventHandler(this.btnAplicarFiltrosCategoria_Click);
             // 
             // tlpBotonesFiltros
             // 
@@ -336,33 +340,33 @@
             this.panelBotonesFiltros.Size = new System.Drawing.Size(619, 70);
             this.panelBotonesFiltros.TabIndex = 8;
             // 
-            // tlpFiltrosMarca
+            // tlpFiltrosCategoria
             // 
-            this.tlpFiltrosMarca.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tlpFiltrosMarca.ColumnCount = 3;
-            this.tlpFiltrosMarca.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFiltrosMarca.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpFiltrosMarca.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFiltrosMarca.Controls.Add(this.panelBotonesFiltros, 2, 0);
-            this.tlpFiltrosMarca.Controls.Add(this.tlpOrdenarCategoria, 1, 0);
-            this.tlpFiltrosMarca.Controls.Add(this.tlpBuscarMarca, 0, 0);
-            this.tlpFiltrosMarca.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpFiltrosMarca.Location = new System.Drawing.Point(10, 41);
-            this.tlpFiltrosMarca.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.tlpFiltrosMarca.Name = "tlpFiltrosMarca";
-            this.tlpFiltrosMarca.Padding = new System.Windows.Forms.Padding(10);
-            this.tlpFiltrosMarca.RowCount = 1;
-            this.tlpFiltrosMarca.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFiltrosMarca.Size = new System.Drawing.Size(1179, 90);
-            this.tlpFiltrosMarca.TabIndex = 3;
+            this.tlpFiltrosCategoria.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tlpFiltrosCategoria.ColumnCount = 3;
+            this.tlpFiltrosCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpFiltrosCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpFiltrosCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpFiltrosCategoria.Controls.Add(this.panelBotonesFiltros, 2, 0);
+            this.tlpFiltrosCategoria.Controls.Add(this.tlpOrdenarCategoria, 1, 0);
+            this.tlpFiltrosCategoria.Controls.Add(this.tlpBuscarMarca, 0, 0);
+            this.tlpFiltrosCategoria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpFiltrosCategoria.Location = new System.Drawing.Point(10, 41);
+            this.tlpFiltrosCategoria.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.tlpFiltrosCategoria.Name = "tlpFiltrosCategoria";
+            this.tlpFiltrosCategoria.Padding = new System.Windows.Forms.Padding(10);
+            this.tlpFiltrosCategoria.RowCount = 1;
+            this.tlpFiltrosCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpFiltrosCategoria.Size = new System.Drawing.Size(1179, 90);
+            this.tlpFiltrosCategoria.TabIndex = 3;
             // 
             // tlpContenedorCategoria
             // 
             this.tlpContenedorCategoria.ColumnCount = 1;
             this.tlpContenedorCategoria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContenedorCategoria.Controls.Add(this.lblTituloCategoria, 0, 0);
-            this.tlpContenedorCategoria.Controls.Add(this.tlpListadoMarcas, 0, 2);
-            this.tlpContenedorCategoria.Controls.Add(this.tlpFiltrosMarca, 0, 1);
+            this.tlpContenedorCategoria.Controls.Add(this.tlpListadoCategoria, 0, 2);
+            this.tlpContenedorCategoria.Controls.Add(this.tlpFiltrosCategoria, 0, 1);
             this.tlpContenedorCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpContenedorCategoria.Location = new System.Drawing.Point(0, 0);
             this.tlpContenedorCategoria.Name = "tlpContenedorCategoria";
@@ -384,8 +388,8 @@
             this.Size = new System.Drawing.Size(1199, 638);
             this.tlpBuscarMarca.ResumeLayout(false);
             this.tlpBuscarMarca.PerformLayout();
-            this.tlpListadoMarcas.ResumeLayout(false);
-            this.tlpListadoMarcas.PerformLayout();
+            this.tlpListadoCategoria.ResumeLayout(false);
+            this.tlpListadoCategoria.PerformLayout();
             this.tlpEncabezadoListado.ResumeLayout(false);
             this.tlpEncabezadoListado.PerformLayout();
             this.flpBotonesAcciones.ResumeLayout(false);
@@ -395,8 +399,8 @@
             this.tlpBotonesFiltros.ResumeLayout(false);
             this.panelBotonesFiltros.ResumeLayout(false);
             this.panelBotonesFiltros.PerformLayout();
-            this.tlpFiltrosMarca.ResumeLayout(false);
-            this.tlpFiltrosMarca.PerformLayout();
+            this.tlpFiltrosCategoria.ResumeLayout(false);
+            this.tlpFiltrosCategoria.PerformLayout();
             this.tlpContenedorCategoria.ResumeLayout(false);
             this.tlpContenedorCategoria.PerformLayout();
             this.ResumeLayout(false);
@@ -409,7 +413,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpBuscarMarca;
         private System.Windows.Forms.Label lblBuscarCategoria;
         private System.Windows.Forms.Label lblTituloCategoria;
-        private System.Windows.Forms.TableLayoutPanel tlpListadoMarcas;
+        private System.Windows.Forms.TableLayoutPanel tlpListadoCategoria;
         private System.Windows.Forms.TableLayoutPanel tlpEncabezadoListado;
         private System.Windows.Forms.Label lblListadoCategoria;
         private System.Windows.Forms.FlowLayoutPanel flpBotonesAcciones;
@@ -424,7 +428,7 @@
         private System.Windows.Forms.Button btnAplicarFiltrosCategoria;
         private System.Windows.Forms.TableLayoutPanel tlpBotonesFiltros;
         private System.Windows.Forms.Panel panelBotonesFiltros;
-        private System.Windows.Forms.TableLayoutPanel tlpFiltrosMarca;
+        private System.Windows.Forms.TableLayoutPanel tlpFiltrosCategoria;
         private System.Windows.Forms.TableLayoutPanel tlpContenedorCategoria;
     }
 }

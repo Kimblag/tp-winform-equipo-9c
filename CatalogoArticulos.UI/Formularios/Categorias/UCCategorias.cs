@@ -1,5 +1,6 @@
 ﻿using CatalogoArticulos.Dominio.Entidades;
 using CatalogoArticulos.Negocio;
+using CatalogoArticulos.UI.Formularios.Marcas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
 {
     public partial class UCCategorias : UserControl
     {
+        private List<Categoria> categorias;
         public UCCategorias()
         {
             InitializeComponent();
@@ -24,12 +26,15 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
         {
             cmbOrdenarCategoria.SelectedIndex = 0;
             CargarListadoCategorias();
+           
         }
 
+      
         private void CargarListadoCategorias()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
-            dgvCategoria.DataSource = negocio.listar();
+            categorias = negocio.listar();
+            dgvCategoria.DataSource = categorias;
         }
 
         private void btnAgregarCategoria_Click(object sender, EventArgs e)
@@ -82,6 +87,60 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
                 MessageBox.Show(ex.ToString());
             }
         }
+
+       private void btnAplicarFiltrosCategoria_Click(object sender, EventArgs e)
+        {
+            aplicarFiltrosYOrden();
+        }
+
+        private void btnLimpiarFiltrosCategoria_Click(object sender, EventArgs e)
+        {
+            txtBuscarCategoria.Text = "";
+            cmbOrdenarCategoria.SelectedIndex = 0;
+            aplicarFiltrosYOrden();
+        }
+
+        private void txtBuscarCategoria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                aplicarFiltrosYOrden();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+
+
+        private void aplicarFiltrosYOrden()
+        {
+            string filtro = txtBuscarCategoria.Text?.Trim().ToUpper();
+            string orden = cmbOrdenarCategoria.SelectedItem?.ToString();
+
+            List<Categoria> categoriaFiltradas = categorias;
+
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                categoriaFiltradas = categoriaFiltradas.FindAll(categoria => categoria.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+
+            switch (orden)
+            {
+                case "Descripción (A-Z)":
+                    categoriaFiltradas = categoriaFiltradas.OrderBy(categoria => categoria.Descripcion).ToList();
+                    break;
+                case "Descripción (Z-A)":
+                    categoriaFiltradas = categoriaFiltradas.OrderByDescending(categoria => categoria.Descripcion).ToList();
+                    break;
+                case "Sin ordenar":
+                default:
+                    break;
+            }
+
+            dgvCategoria.DataSource = null;
+            dgvCategoria.DataSource = categoriaFiltradas;
+        }
+
+
     }
 
 }
