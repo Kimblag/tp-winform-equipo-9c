@@ -15,5 +15,10 @@ namespace CatalogoArticulos.Dominio.Entidades
         {
 
         }
+
+        public override string ToString()
+        {
+            return Descripcion;
+        }
     }
 }

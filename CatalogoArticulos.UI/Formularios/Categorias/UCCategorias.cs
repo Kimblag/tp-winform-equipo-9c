@@ -33,8 +33,20 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
         private void CargarListadoCategorias()
         {
             CategoriaNegocio negocio = new CategoriaNegocio();
-            categorias = negocio.listar();
-            dgvCategoria.DataSource = categorias;
+            try
+            {
+                categorias = negocio.listar();
+                dgvCategoria.DataSource = categorias;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                   "Ocurrió un error al cargar las categorías. Por favor, intentá nuevamente.",
+                   "Error de carga",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error
+               );
+            }
         }
 
         private void btnAgregarCategoria_Click(object sender, EventArgs e)

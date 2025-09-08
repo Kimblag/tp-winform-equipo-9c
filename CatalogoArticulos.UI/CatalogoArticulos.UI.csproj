@@ -143,6 +143,7 @@
     <Content Include="Recursos\iconArticulos.png" />
     <Content Include="Recursos\iconCategoria.png" />
     <Content Include="Recursos\iconMarca.png" />
+    <None Include="Recursos\imagenDefault.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

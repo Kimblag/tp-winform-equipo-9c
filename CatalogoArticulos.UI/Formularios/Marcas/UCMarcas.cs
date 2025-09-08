@@ -30,8 +30,20 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
         private void CargarListadoMarcas()
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            marcas = negocio.listar();
-            dgvMarcas.DataSource = marcas;
+            try
+            {
+                marcas = negocio.listar();
+                dgvMarcas.DataSource = marcas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                   "Ocurrió un error al cargar las marcas. Por favor, intentá nuevamente.",
+                   "Error de carga",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Error
+               );
+            }
         }
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)

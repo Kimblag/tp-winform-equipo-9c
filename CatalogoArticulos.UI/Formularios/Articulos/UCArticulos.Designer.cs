@@ -38,8 +38,8 @@
             this.cmbCriterioArticulo = new System.Windows.Forms.ComboBox();
             this.txtValorArticulo = new System.Windows.Forms.TextBox();
             this.flpBotonesFiltrosArticulo = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAplicarFiltrosArticulo = new System.Windows.Forms.Button();
             this.btnLimpiarFiltrosArticulo = new System.Windows.Forms.Button();
+            this.btnAplicarFiltrosArticulo = new System.Windows.Forms.Button();
             this.tlpListadoArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.tlpEncabezadoListadoArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.flpBotonesArticulo = new System.Windows.Forms.FlowLayoutPanel();
@@ -49,18 +49,18 @@
             this.lblListadoArticulos = new System.Windows.Forms.Label();
             this.dgvArticulos = new System.Windows.Forms.DataGridView();
             this.panelDetalleArticulo = new System.Windows.Forms.Panel();
+            this.tlpDatosArticulo = new System.Windows.Forms.TableLayoutPanel();
+            this.lblPrecioArticulo = new System.Windows.Forms.Label();
+            this.lblCategoriaArticulo = new System.Windows.Forms.Label();
+            this.lblMarcaArticulo = new System.Windows.Forms.Label();
+            this.lblNombreArticulo = new System.Windows.Forms.Label();
+            this.lblCodigoArticulo = new System.Windows.Forms.Label();
+            this.lblDescripcionArticulo = new System.Windows.Forms.Label();
             this.tlpImagenArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.tlpNavegacionImagenArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.btnImagenAnterior = new System.Windows.Forms.Button();
             this.btnImagenSiguiente = new System.Windows.Forms.Button();
             this.lblIndiceImagen = new System.Windows.Forms.Label();
-            this.tlpDatosArticulo = new System.Windows.Forms.TableLayoutPanel();
-            this.lblCodigoArticulo = new System.Windows.Forms.Label();
-            this.lblNombreArticulo = new System.Windows.Forms.Label();
-            this.lblMarcaArticulo = new System.Windows.Forms.Label();
-            this.lblCategoriaArticulo = new System.Windows.Forms.Label();
-            this.lblPrecioArticulo = new System.Windows.Forms.Label();
-            this.lblDescripcionArticulo = new System.Windows.Forms.Label();
             this.pbImagenArticulo = new System.Windows.Forms.PictureBox();
             this.tlpArticulos.SuspendLayout();
             this.tlpFiltrosArticulo.SuspendLayout();
@@ -70,9 +70,9 @@
             this.flpBotonesArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             this.panelDetalleArticulo.SuspendLayout();
+            this.tlpDatosArticulo.SuspendLayout();
             this.tlpImagenArticulo.SuspendLayout();
             this.tlpNavegacionImagenArticulo.SuspendLayout();
-            this.tlpDatosArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -220,16 +220,6 @@
             this.flpBotonesFiltrosArticulo.Size = new System.Drawing.Size(304, 100);
             this.flpBotonesFiltrosArticulo.TabIndex = 2;
             // 
-            // btnAplicarFiltrosArticulo
-            // 
-            this.btnAplicarFiltrosArticulo.Location = new System.Drawing.Point(49, 21);
-            this.btnAplicarFiltrosArticulo.Margin = new System.Windows.Forms.Padding(5);
-            this.btnAplicarFiltrosArticulo.Name = "btnAplicarFiltrosArticulo";
-            this.btnAplicarFiltrosArticulo.Size = new System.Drawing.Size(120, 30);
-            this.btnAplicarFiltrosArticulo.TabIndex = 0;
-            this.btnAplicarFiltrosArticulo.Text = "Buscar";
-            this.btnAplicarFiltrosArticulo.UseVisualStyleBackColor = true;
-            // 
             // btnLimpiarFiltrosArticulo
             // 
             this.btnLimpiarFiltrosArticulo.BackColor = System.Drawing.Color.White;
@@ -240,6 +230,16 @@
             this.btnLimpiarFiltrosArticulo.TabIndex = 1;
             this.btnLimpiarFiltrosArticulo.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosArticulo.UseVisualStyleBackColor = false;
+            // 
+            // btnAplicarFiltrosArticulo
+            // 
+            this.btnAplicarFiltrosArticulo.Location = new System.Drawing.Point(49, 21);
+            this.btnAplicarFiltrosArticulo.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAplicarFiltrosArticulo.Name = "btnAplicarFiltrosArticulo";
+            this.btnAplicarFiltrosArticulo.Size = new System.Drawing.Size(120, 30);
+            this.btnAplicarFiltrosArticulo.TabIndex = 0;
+            this.btnAplicarFiltrosArticulo.Text = "Buscar";
+            this.btnAplicarFiltrosArticulo.UseVisualStyleBackColor = true;
             // 
             // tlpListadoArticulo
             // 
@@ -344,6 +344,7 @@
             this.dgvArticulos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvArticulos.Size = new System.Drawing.Size(695, 679);
             this.dgvArticulos.TabIndex = 1;
+            this.dgvArticulos.SelectionChanged += new System.EventHandler(this.dgvArticulos_SelectionChanged);
             // 
             // panelDetalleArticulo
             // 
@@ -357,6 +358,114 @@
             this.panelDetalleArticulo.Padding = new System.Windows.Forms.Padding(10);
             this.panelDetalleArticulo.Size = new System.Drawing.Size(298, 725);
             this.panelDetalleArticulo.TabIndex = 4;
+            // 
+            // tlpDatosArticulo
+            // 
+            this.tlpDatosArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.tlpDatosArticulo.ColumnCount = 1;
+            this.tlpDatosArticulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpDatosArticulo.Controls.Add(this.lblPrecioArticulo, 0, 4);
+            this.tlpDatosArticulo.Controls.Add(this.lblCategoriaArticulo, 0, 3);
+            this.tlpDatosArticulo.Controls.Add(this.lblMarcaArticulo, 0, 2);
+            this.tlpDatosArticulo.Controls.Add(this.lblNombreArticulo, 0, 1);
+            this.tlpDatosArticulo.Controls.Add(this.lblCodigoArticulo, 0, 0);
+            this.tlpDatosArticulo.Controls.Add(this.lblDescripcionArticulo, 0, 5);
+            this.tlpDatosArticulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpDatosArticulo.Location = new System.Drawing.Point(10, 204);
+            this.tlpDatosArticulo.Margin = new System.Windows.Forms.Padding(10);
+            this.tlpDatosArticulo.Name = "tlpDatosArticulo";
+            this.tlpDatosArticulo.RowCount = 6;
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpDatosArticulo.Size = new System.Drawing.Size(276, 401);
+            this.tlpDatosArticulo.TabIndex = 1;
+            // 
+            // lblPrecioArticulo
+            // 
+            this.lblPrecioArticulo.AutoSize = true;
+            this.lblPrecioArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrecioArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblPrecioArticulo.Location = new System.Drawing.Point(0, 120);
+            this.lblPrecioArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lblPrecioArticulo.Name = "lblPrecioArticulo";
+            this.lblPrecioArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblPrecioArticulo.Size = new System.Drawing.Size(276, 30);
+            this.lblPrecioArticulo.TabIndex = 4;
+            this.lblPrecioArticulo.Text = "Precio: $1.200,00";
+            this.lblPrecioArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCategoriaArticulo
+            // 
+            this.lblCategoriaArticulo.AutoSize = true;
+            this.lblCategoriaArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblCategoriaArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCategoriaArticulo.Location = new System.Drawing.Point(0, 90);
+            this.lblCategoriaArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCategoriaArticulo.Name = "lblCategoriaArticulo";
+            this.lblCategoriaArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblCategoriaArticulo.Size = new System.Drawing.Size(276, 30);
+            this.lblCategoriaArticulo.TabIndex = 3;
+            this.lblCategoriaArticulo.Text = "Categoría: Accesorios";
+            this.lblCategoriaArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblMarcaArticulo
+            // 
+            this.lblMarcaArticulo.AutoSize = true;
+            this.lblMarcaArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblMarcaArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblMarcaArticulo.Location = new System.Drawing.Point(0, 60);
+            this.lblMarcaArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lblMarcaArticulo.Name = "lblMarcaArticulo";
+            this.lblMarcaArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblMarcaArticulo.Size = new System.Drawing.Size(276, 30);
+            this.lblMarcaArticulo.TabIndex = 2;
+            this.lblMarcaArticulo.Text = "Marca: Travel";
+            this.lblMarcaArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblNombreArticulo
+            // 
+            this.lblNombreArticulo.AutoSize = true;
+            this.lblNombreArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblNombreArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblNombreArticulo.Location = new System.Drawing.Point(0, 30);
+            this.lblNombreArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lblNombreArticulo.Name = "lblNombreArticulo";
+            this.lblNombreArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblNombreArticulo.Size = new System.Drawing.Size(276, 30);
+            this.lblNombreArticulo.TabIndex = 1;
+            this.lblNombreArticulo.Text = "Nombre: Mochila Campus";
+            this.lblNombreArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblCodigoArticulo
+            // 
+            this.lblCodigoArticulo.AutoSize = true;
+            this.lblCodigoArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.lblCodigoArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblCodigoArticulo.Location = new System.Drawing.Point(0, 0);
+            this.lblCodigoArticulo.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCodigoArticulo.Name = "lblCodigoArticulo";
+            this.lblCodigoArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblCodigoArticulo.Size = new System.Drawing.Size(276, 30);
+            this.lblCodigoArticulo.TabIndex = 0;
+            this.lblCodigoArticulo.Text = "Código: ART-001";
+            this.lblCodigoArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblDescripcionArticulo
+            // 
+            this.lblDescripcionArticulo.AutoSize = true;
+            this.lblDescripcionArticulo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblDescripcionArticulo.Location = new System.Drawing.Point(0, 155);
+            this.lblDescripcionArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblDescripcionArticulo.Name = "lblDescripcionArticulo";
+            this.lblDescripcionArticulo.Padding = new System.Windows.Forms.Padding(5);
+            this.lblDescripcionArticulo.Size = new System.Drawing.Size(276, 61);
+            this.lblDescripcionArticulo.TabIndex = 5;
+            this.lblDescripcionArticulo.Text = "Descripción: Mochila resistente con compartimentos múltiples, ideal para estudian" +
+    "tes";
             // 
             // tlpImagenArticulo
             // 
@@ -403,6 +512,7 @@
             this.btnImagenAnterior.TabIndex = 0;
             this.btnImagenAnterior.Text = "←";
             this.btnImagenAnterior.UseVisualStyleBackColor = true;
+            this.btnImagenAnterior.Click += new System.EventHandler(this.btnImagenAnterior_Click);
             // 
             // btnImagenSiguiente
             // 
@@ -413,6 +523,7 @@
             this.btnImagenSiguiente.TabIndex = 1;
             this.btnImagenSiguiente.Text = "→";
             this.btnImagenSiguiente.UseVisualStyleBackColor = true;
+            this.btnImagenSiguiente.Click += new System.EventHandler(this.btnImagenSiguiente_Click);
             // 
             // lblIndiceImagen
             // 
@@ -424,114 +535,6 @@
             this.lblIndiceImagen.TabIndex = 2;
             this.lblIndiceImagen.Text = "1 / N";
             this.lblIndiceImagen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // tlpDatosArticulo
-            // 
-            this.tlpDatosArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.tlpDatosArticulo.ColumnCount = 1;
-            this.tlpDatosArticulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpDatosArticulo.Controls.Add(this.lblPrecioArticulo, 0, 4);
-            this.tlpDatosArticulo.Controls.Add(this.lblCategoriaArticulo, 0, 3);
-            this.tlpDatosArticulo.Controls.Add(this.lblMarcaArticulo, 0, 2);
-            this.tlpDatosArticulo.Controls.Add(this.lblNombreArticulo, 0, 1);
-            this.tlpDatosArticulo.Controls.Add(this.lblCodigoArticulo, 0, 0);
-            this.tlpDatosArticulo.Controls.Add(this.lblDescripcionArticulo, 0, 5);
-            this.tlpDatosArticulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpDatosArticulo.Location = new System.Drawing.Point(10, 204);
-            this.tlpDatosArticulo.Margin = new System.Windows.Forms.Padding(10);
-            this.tlpDatosArticulo.Name = "tlpDatosArticulo";
-            this.tlpDatosArticulo.RowCount = 6;
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpDatosArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpDatosArticulo.Size = new System.Drawing.Size(276, 401);
-            this.tlpDatosArticulo.TabIndex = 1;
-            // 
-            // lblCodigoArticulo
-            // 
-            this.lblCodigoArticulo.AutoSize = true;
-            this.lblCodigoArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigoArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCodigoArticulo.Location = new System.Drawing.Point(0, 0);
-            this.lblCodigoArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCodigoArticulo.Name = "lblCodigoArticulo";
-            this.lblCodigoArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblCodigoArticulo.Size = new System.Drawing.Size(276, 30);
-            this.lblCodigoArticulo.TabIndex = 0;
-            this.lblCodigoArticulo.Text = "Código: ART-001";
-            this.lblCodigoArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblNombreArticulo
-            // 
-            this.lblNombreArticulo.AutoSize = true;
-            this.lblNombreArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblNombreArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblNombreArticulo.Location = new System.Drawing.Point(0, 30);
-            this.lblNombreArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblNombreArticulo.Name = "lblNombreArticulo";
-            this.lblNombreArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblNombreArticulo.Size = new System.Drawing.Size(276, 30);
-            this.lblNombreArticulo.TabIndex = 1;
-            this.lblNombreArticulo.Text = "Nombre: Mochila Campus";
-            this.lblNombreArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblMarcaArticulo
-            // 
-            this.lblMarcaArticulo.AutoSize = true;
-            this.lblMarcaArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblMarcaArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMarcaArticulo.Location = new System.Drawing.Point(0, 60);
-            this.lblMarcaArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblMarcaArticulo.Name = "lblMarcaArticulo";
-            this.lblMarcaArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblMarcaArticulo.Size = new System.Drawing.Size(276, 30);
-            this.lblMarcaArticulo.TabIndex = 2;
-            this.lblMarcaArticulo.Text = "Marca: Travel";
-            this.lblMarcaArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblCategoriaArticulo
-            // 
-            this.lblCategoriaArticulo.AutoSize = true;
-            this.lblCategoriaArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblCategoriaArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCategoriaArticulo.Location = new System.Drawing.Point(0, 90);
-            this.lblCategoriaArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblCategoriaArticulo.Name = "lblCategoriaArticulo";
-            this.lblCategoriaArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblCategoriaArticulo.Size = new System.Drawing.Size(276, 30);
-            this.lblCategoriaArticulo.TabIndex = 3;
-            this.lblCategoriaArticulo.Text = "Categoría: Accesorios";
-            this.lblCategoriaArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblPrecioArticulo
-            // 
-            this.lblPrecioArticulo.AutoSize = true;
-            this.lblPrecioArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.lblPrecioArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblPrecioArticulo.Location = new System.Drawing.Point(0, 120);
-            this.lblPrecioArticulo.Margin = new System.Windows.Forms.Padding(0);
-            this.lblPrecioArticulo.Name = "lblPrecioArticulo";
-            this.lblPrecioArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblPrecioArticulo.Size = new System.Drawing.Size(276, 30);
-            this.lblPrecioArticulo.TabIndex = 4;
-            this.lblPrecioArticulo.Text = "Precio: $1.200,00";
-            this.lblPrecioArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblDescripcionArticulo
-            // 
-            this.lblDescripcionArticulo.AutoSize = true;
-            this.lblDescripcionArticulo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblDescripcionArticulo.Location = new System.Drawing.Point(0, 155);
-            this.lblDescripcionArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.lblDescripcionArticulo.Name = "lblDescripcionArticulo";
-            this.lblDescripcionArticulo.Padding = new System.Windows.Forms.Padding(5);
-            this.lblDescripcionArticulo.Size = new System.Drawing.Size(276, 61);
-            this.lblDescripcionArticulo.TabIndex = 5;
-            this.lblDescripcionArticulo.Text = "Descripción: Mochila resistente con compartimentos múltiples, ideal para estudian" +
-    "tes";
             // 
             // pbImagenArticulo
             // 
@@ -556,6 +559,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UCArticulos";
             this.Size = new System.Drawing.Size(1031, 891);
+            this.Load += new System.EventHandler(this.UCArticulos_Load);
             this.tlpArticulos.ResumeLayout(false);
             this.tlpArticulos.PerformLayout();
             this.tlpFiltrosArticulo.ResumeLayout(false);
@@ -567,10 +571,10 @@
             this.flpBotonesArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).EndInit();
             this.panelDetalleArticulo.ResumeLayout(false);
-            this.tlpImagenArticulo.ResumeLayout(false);
-            this.tlpNavegacionImagenArticulo.ResumeLayout(false);
             this.tlpDatosArticulo.ResumeLayout(false);
             this.tlpDatosArticulo.PerformLayout();
+            this.tlpImagenArticulo.ResumeLayout(false);
+            this.tlpNavegacionImagenArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbImagenArticulo)).EndInit();
             this.ResumeLayout(false);
 
