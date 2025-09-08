@@ -61,5 +61,47 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
                 CargarListadoMarcas();
             }
         }
+
+        private void btnEliminarMarca_Click(object sender, EventArgs e)
+        {
+            if (dgvMarcas.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccioná una marca para eliminar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+            Marca marcaSeleccionada = (Marca)dgvMarcas.CurrentRow.DataBoundItem;
+
+            DialogResult respuesta = MessageBox.Show(
+                "¡Atención! Se eliminará la marca seleccionada. ¿Desea continuar?", 
+                "Eliminar marca", 
+                MessageBoxButtons.YesNo, 
+                MessageBoxIcon.Question);
+
+
+            if (respuesta == DialogResult.Yes)
+            {
+                try
+                {
+                    MarcaNegocio negocio = new MarcaNegocio();
+                    negocio.eliminar(marcaSeleccionada.Id);
+                    MessageBox.Show("Marca eliminada correctamente.", 
+                        "Eliminación", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information);
+                    CargarListadoMarcas();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ocurrió un error al eliminar:\n" + ex.Message, 
+                        "Error", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+        
     }
 }

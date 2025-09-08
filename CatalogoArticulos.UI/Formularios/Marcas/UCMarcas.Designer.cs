@@ -189,6 +189,7 @@
             this.btnEliminarMarca.TabIndex = 2;
             this.btnEliminarMarca.Text = "Eliminar";
             this.btnEliminarMarca.UseVisualStyleBackColor = false;
+            this.btnEliminarMarca.Click += new System.EventHandler(this.btnEliminarMarca_Click);
             // 
             // dgvMarcas
             // 
