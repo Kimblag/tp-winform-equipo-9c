@@ -269,6 +269,7 @@
             this.btnLimpiarFiltrosMarca.TabIndex = 5;
             this.btnLimpiarFiltrosMarca.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosMarca.UseVisualStyleBackColor = false;
+            this.btnLimpiarFiltrosMarca.Click += new System.EventHandler(this.btnLimpiarFiltrosMarca_Click);
             // 
             // btnAplicarFiltrosMarca
             // 
@@ -280,6 +281,7 @@
             this.btnAplicarFiltrosMarca.TabIndex = 4;
             this.btnAplicarFiltrosMarca.Text = "Aplicar filtros";
             this.btnAplicarFiltrosMarca.UseVisualStyleBackColor = false;
+            this.btnAplicarFiltrosMarca.Click += new System.EventHandler(this.btnAplicarFiltrosMarca_Click);
             // 
             // tlpOrdenarMarca
             // 
@@ -316,8 +318,8 @@
             this.cmbOrdenarMarca.FormattingEnabled = true;
             this.cmbOrdenarMarca.Items.AddRange(new object[] {
             "Sin ordenar",
-            "Nombre (A-Z)",
-            "Nombre (Z-A)"});
+            "Descripción (A-Z)",
+            "Descripción (Z-A)"});
             this.cmbOrdenarMarca.Location = new System.Drawing.Point(0, 25);
             this.cmbOrdenarMarca.Margin = new System.Windows.Forms.Padding(0);
             this.cmbOrdenarMarca.Name = "cmbOrdenarMarca";
@@ -364,6 +366,7 @@
             this.txtBuscarMarca.Name = "txtBuscarMarca";
             this.txtBuscarMarca.Size = new System.Drawing.Size(250, 25);
             this.txtBuscarMarca.TabIndex = 1;
+            this.txtBuscarMarca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarMarca_KeyDown);
             // 
             // UCMarcas
             // 

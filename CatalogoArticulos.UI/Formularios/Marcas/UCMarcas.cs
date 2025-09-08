@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,6 +15,7 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
 {
     public partial class UCMarcas : UserControl
     {
+        private List<Marca> marcas;
         public UCMarcas()
         {
             InitializeComponent();
@@ -28,7 +30,8 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
         private void CargarListadoMarcas()
         {
             MarcaNegocio negocio = new MarcaNegocio();
-            dgvMarcas.DataSource = negocio.listar();
+            marcas = negocio.listar();
+            dgvMarcas.DataSource = marcas;
         }
 
         private void btnAgregarMarca_Click(object sender, EventArgs e)
@@ -102,6 +105,56 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
                 }
             }
         }
-        
+
+        private void btnAplicarFiltrosMarca_Click(object sender, EventArgs e)
+        {
+            aplicarFiltrosYOrden();
+        }
+
+        private void btnLimpiarFiltrosMarca_Click(object sender, EventArgs e)
+        {
+            txtBuscarMarca.Text = "";
+            cmbOrdenarMarca.SelectedIndex = 0;
+            aplicarFiltrosYOrden();
+        }
+
+        private void txtBuscarMarca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                aplicarFiltrosYOrden();
+                e.SuppressKeyPress = true; // con esto se evita el sonido molesto de windows
+            }
+        }
+
+
+        private void aplicarFiltrosYOrden()
+        {
+            string filtro = txtBuscarMarca.Text?.Trim().ToUpper();
+            string orden = cmbOrdenarMarca.SelectedItem?.ToString();
+
+            List<Marca> marcasFiltradas = marcas;
+
+            if (!string.IsNullOrWhiteSpace(filtro))
+            {
+                marcasFiltradas = marcasFiltradas.FindAll(marca => marca.Descripcion.ToUpper().Contains(filtro.ToUpper()));
+            }
+
+            switch (orden)
+            {
+                case "Descripción (A-Z)":
+                    marcasFiltradas = marcasFiltradas.OrderBy(marca => marca.Descripcion).ToList();
+                    break;
+                case "Descripción (Z-A)":
+                    marcasFiltradas = marcasFiltradas.OrderByDescending(marca => marca.Descripcion).ToList();
+                    break;
+                case "Sin ordenar":
+                default:
+                    break;
+            }
+
+            dgvMarcas.DataSource = null;
+            dgvMarcas.DataSource = marcasFiltradas;
+        }
     }
 }
