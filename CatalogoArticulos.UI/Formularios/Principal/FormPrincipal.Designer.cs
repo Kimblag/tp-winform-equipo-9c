@@ -97,6 +97,7 @@
             this.btnArticulos.TabIndex = 0;
             this.btnArticulos.Text = "Artículos";
             this.btnArticulos.UseVisualStyleBackColor = true;
+            this.btnArticulos.Click += new System.EventHandler(this.btnArticulos_Click);
             // 
             // panelContenido
             // 
@@ -121,6 +122,7 @@
             this.Name = "FormPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Catálogo de artículos";
+            this.Load += new System.EventHandler(this.FormPrincipal_Load);
             this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 

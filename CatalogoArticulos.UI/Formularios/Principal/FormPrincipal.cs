@@ -1,4 +1,5 @@
-﻿using CatalogoArticulos.UI.Formularios.Categorias;
+﻿using CatalogoArticulos.UI.Formularios.Articulos;
+using CatalogoArticulos.UI.Formularios.Categorias;
 using CatalogoArticulos.UI.Formularios.Marcas;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace CatalogoArticulos.UI.Formularios.Principal
         }
 
         private UCMarcas vistaMarcas;
+        private UCArticulos vistaArticulos;
 
         private void btnMarcas_Click(object sender, EventArgs e)
         {
@@ -63,6 +65,23 @@ namespace CatalogoArticulos.UI.Formularios.Principal
             botonActivo.BackColor = Color.WhiteSmoke;
         }
 
-      
+        private void btnArticulos_Click(object sender, EventArgs e)
+        {
+            mostrarVistaArticulos();
+        }
+
+        private void FormPrincipal_Load(object sender, EventArgs e)
+        {
+            mostrarVistaArticulos();
+        }
+
+        private void mostrarVistaArticulos()
+        {
+            if (vistaArticulos == null)
+                vistaArticulos = new UCArticulos();
+
+            MostrarVista(vistaArticulos);
+            MarcarBotonActivo(btnArticulos);
+        }
     }
 }

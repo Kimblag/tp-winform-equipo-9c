@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Articulos\UCArticulos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Formularios\Articulos\UCArticulos.Designer.cs">
+      <DependentUpon>UCArticulos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Categorias\FormCategoriaDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Articulos\UCArticulos.resx">
+      <DependentUpon>UCArticulos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Categorias\FormCategoriaDetalle.resx">
       <DependentUpon>FormCategoriaDetalle.cs</DependentUpon>
     </EmbeddedResource>
