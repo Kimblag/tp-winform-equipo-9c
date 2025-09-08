@@ -1,4 +1,4 @@
-# TP2 - Aplicación de Catálogo de Artículos (Winforms)
+# Trabajo Práctico 2 Equipo 9C - Aplicación de Catálogo de Artículos (Winforms)
 
 ## Descripción
 El siguiente trabajo práctico se trata de una aplicación de escritorio en WinForms para la gestión de artículos de un catálogo de comercio.
