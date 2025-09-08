@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace CatalogoArticulos.Dominio.Entidades
 {
-    public class Marca
+    public class Imagen
     {
         public int Id { get; set; }
-        public string Descripcion { get; set; }
-
+        public string Url { get; set; }
     }
 }

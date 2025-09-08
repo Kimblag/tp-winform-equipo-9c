@@ -45,7 +45,7 @@ namespace CatalogoArticulos.UI.Formularios.Marcas
                 return;
             }
 
-            string descripcion = txtDescripcionMarca.Text.Trim();
+            string descripcion = txtDescripcionMarca.Text?.Trim();
             Marca marca = new Marca();
             MarcaNegocio negocio = new MarcaNegocio();
             
