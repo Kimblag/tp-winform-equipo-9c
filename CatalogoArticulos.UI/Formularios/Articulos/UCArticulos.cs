@@ -30,9 +30,7 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
         private void UCArticulos_Load(object sender, EventArgs e)
         {
             CargarListadoArticulos();
-            // engancho botones de filtros
-            //btnAplicarFiltrosArticulo.Click += btnAplicarFiltrosArticulo_Click;
-            //btnLimpiarFiltrosArticulo.Click += btnLimpiarFiltrosArticulo_Click;
+            
         }
 
         private void CargarListadoArticulos()
@@ -253,6 +251,23 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                     return new List<Articulo>();
             }
         }
+        private List<Articulo> FiltrarPorDescripcion(string criterio, string valor)
+        {
+            valor = valor.ToUpper();
+
+            switch (criterio)
+            {
+                case "Contiene":
+                    return articulos.FindAll(a => a.Descripcion.ToUpper().Contains(valor));
+                case "Comienza con":
+                    return articulos.FindAll(a => a.Descripcion.ToUpper().StartsWith(valor));
+                case "Termina con":
+                    return articulos.FindAll(a => a.Descripcion.ToUpper().EndsWith(valor));
+                default:
+                    MessageBox.Show("Criterio no válido.");
+                    return new List<Articulo>();
+            }
+        }
 
         private void btnAplicarFiltrosArticulo_Click(object sender, EventArgs e)
         {
@@ -276,8 +291,14 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 case "Nombre":
                     resultado = FiltrarPorNombre(criterio, valorTexto);
                     break;
+                case "Descripcion":
+                    resultado = FiltrarPorDescripcion(criterio, valorTexto);
+                    break;
                 case "Marca":
                     resultado = articulos.FindAll(a => a.Marca.Descripcion.ToUpper().Contains(criterio.ToUpper()));
+                    break;
+                case "Categoria":
+                    resultado = articulos.FindAll(a => a.Categoria.Descripcion.ToUpper().Contains(criterio.ToUpper()));
                     break;
                 default:
                     MessageBox.Show("Campo no reconocido.");
@@ -335,6 +356,17 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 cmbCriterioArticulo.SelectedIndex = 0;
             }
 
+        }
+
+        private void btnAgregarArticulo_Click(object sender, EventArgs e)
+        {
+            FormArticuloAgregar altaArticulo = new FormArticuloAgregar();
+            DialogResult resultado = altaArticulo.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CargarListadoArticulos();
+            }
         }
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Formularios\Articulos\FormArticuloAgregar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Articulos\FormArticuloAgregar.Designer.cs">
+      <DependentUpon>FormArticuloAgregar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Articulos\UCArticulos.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Articulos\FormArticuloAgregar.resx">
+      <DependentUpon>FormArticuloAgregar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Articulos\UCArticulos.resx">
       <DependentUpon>UCArticulos.cs</DependentUpon>
     </EmbeddedResource>
