@@ -17,6 +17,10 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
         private List<Articulo> articulos = new List<Articulo>();
         private List<Imagen> imagenesActuales = new List<Imagen>();
         private int indiceImagenActual;
+        private List<string> camposTexto = new List<string> { "Codigo", "Nombre", "Descripcion" };
+        private List<string> camposNumericos = new List<string> { "Precio" };
+        private List<string> camposListados = new List<string> { "Marca", "Categoria" };
+
 
         public UCArticulos()
         {
@@ -27,8 +31,8 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
         {
             CargarListadoArticulos();
             // engancho botones de filtros
-            btnAplicarFiltrosArticulo.Click += btnAplicarFiltrosArticulo_Click;
-            btnLimpiarFiltrosArticulo.Click += btnLimpiarFiltrosArticulo_Click;
+            //btnAplicarFiltrosArticulo.Click += btnAplicarFiltrosArticulo_Click;
+            //btnLimpiarFiltrosArticulo.Click += btnLimpiarFiltrosArticulo_Click;
         }
 
         private void CargarListadoArticulos()
@@ -167,47 +171,114 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             }
         }
 
+
+        private void validarFiltros(string campo, string criterio, string valorTexto)
+        {
+            // validar si el campo o criterio están vacíos
+            if (string.IsNullOrWhiteSpace(campo) || string.IsNullOrWhiteSpace(criterio))
+            {
+                MessageBox.Show("Seleccioná Campo y Criterio",
+                    "Error al aplicar filtro",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+                return;
+            }
+            // ver si es un campo que admite valores (no es marca o categoria)
+            bool esCampoConValor = camposTexto.Contains(campo) || camposNumericos.Contains(campo);
+            if (esCampoConValor && string.IsNullOrWhiteSpace(valorTexto))
+            {
+                MessageBox.Show("Debes ingresar un valor a buscar.",
+                    "Error al aplicar filtro",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Exclamation);
+                return;
+            }
+        }
+
+        private List<Articulo> FiltrarPorPrecio(string criterio, string valor)
+        {
+            decimal valorDecimal;
+            if (!decimal.TryParse(valor, out valorDecimal))
+            {
+                MessageBox.Show("Ingresá un número válido para Precio.");
+                return articulos;
+            }
+            switch (criterio)
+            {
+                case "Mayor que":
+                    return articulos.Where(a => a.Precio > valorDecimal).ToList();
+                case "Menor que":
+                    return articulos.Where(a => a.Precio < valorDecimal).ToList();
+                case "Igual que":
+                    return articulos.Where(a => a.Precio == valorDecimal).ToList();
+                default:
+                    MessageBox.Show("Criterio no válido para Precio.");
+                    return new List<Articulo>();
+            }
+        }
+
+
+        private List<Articulo> FiltrarPorCodigo(string criterio, string valor)
+        {
+            valor = valor.ToUpper();
+
+            switch (criterio)
+            {
+                case "Contiene":
+                    return articulos.FindAll(a => a.Codigo.ToUpper().Contains(valor));
+                case "Comienza con":
+                    return articulos.FindAll(a => a.Codigo.ToUpper().StartsWith(valor));
+                case "Termina con":
+                    return articulos.FindAll(a => a.Codigo.ToUpper().EndsWith(valor));
+                default:
+                    MessageBox.Show("Criterio no válido.");
+                    return new List<Articulo>();
+            }
+        }
+
+        private List<Articulo> FiltrarPorNombre(string criterio, string valor)
+        {
+            valor = valor.ToUpper();
+
+            switch (criterio)
+            {
+                case "Contiene":
+                    return articulos.FindAll(a => a.Nombre.ToUpper().Contains(valor));
+                case "Comienza con":
+                    return articulos.FindAll(a => a.Nombre.ToUpper().StartsWith(valor));
+                case "Termina con":
+                    return articulos.FindAll(a => a.Nombre.ToUpper().EndsWith(valor));
+                default:
+                    MessageBox.Show("Criterio no válido.");
+                    return new List<Articulo>();
+            }
+        }
+
         private void btnAplicarFiltrosArticulo_Click(object sender, EventArgs e)
         {
             string campo = cmbCampoArticulo.SelectedItem?.ToString();
             string criterio = cmbCriterioArticulo.SelectedItem?.ToString();
-            string valorTexto = txtValorArticulo.Text;
+            string valorTexto = txtValorArticulo.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(campo) || string.IsNullOrWhiteSpace(criterio) || string.IsNullOrWhiteSpace(valorTexto))
-            {
-                MessageBox.Show("Seleccioná Campo, Criterio y escribí un Valor.");
-                return;
-            }
+            // validar si el campo o criterio están vacíos
+            validarFiltros(campo, criterio, valorTexto);
 
             List<Articulo> resultado = new List<Articulo>();
 
             switch (campo)
             {
                 case "Precio":
-                    decimal valor;
-                    if (!decimal.TryParse(valorTexto, out valor))
-                    {
-                        MessageBox.Show("Ingresá un número válido para Precio.");
-                        return;
-                    }
-
-                    switch (criterio)
-                    {
-                        case "Mayor que":
-                            resultado = articulos.Where(a => a.Precio > valor).ToList();
-                            break;
-
-                        case "Menor que":
-                            resultado = articulos.Where(a => a.Precio < valor).ToList();
-                            break;
-
-                        default:
-                            MessageBox.Show("Criterio no válido para Precio.");
-                            return;
-                    }
+                    resultado = FiltrarPorPrecio(criterio, valorTexto);
                     break;
-
-             
+                case "Codigo":
+                    resultado = FiltrarPorCodigo(criterio, valorTexto);
+                    break;
+                case "Nombre":
+                    resultado = FiltrarPorNombre(criterio, valorTexto);
+                    break;
+                case "Marca":
+                    resultado = articulos.FindAll(a => a.Marca.Descripcion.ToUpper().Contains(criterio.ToUpper()));
+                    break;
                 default:
                     MessageBox.Show("Campo no reconocido.");
                     return;
@@ -215,17 +286,55 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
 
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = resultado;
+            dgvArticulos.Columns["Id"].Visible = false;
         }
 
         private void btnLimpiarFiltrosArticulo_Click(object sender, EventArgs e)
         {
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = articulos;
+            dgvArticulos.Columns["Id"].Visible = false;
+            cmbCampoArticulo.SelectedIndex = -1;
+            cmbCriterioArticulo.SelectedIndex = -1;
+            txtValorArticulo.Text = "";
         }
 
+        private void cmbCampoArticulo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string campo = cmbCampoArticulo.SelectedItem?.ToString();
+            cmbCriterioArticulo.Items.Clear(); // se limpia porque dependiendo del campo el criterio varía
+            txtValorArticulo.Visible = true;
+            cmbCriterioArticulo.DropDownStyle = ComboBoxStyle.DropDownList;
 
-       
+            if (camposTexto.Contains(campo))
+            {
+                cmbCriterioArticulo.Items.AddRange(new string[] { "Contiene", "Comienza con", "Termina con" });
+                txtValorArticulo.Enabled = true;
 
+            } else if ( camposNumericos.Contains (campo))
+            {
+                cmbCriterioArticulo.Items.AddRange(new string[] { "Mayor que", "Menor que", "Igual que" });
+                txtValorArticulo.Enabled = true;
 
+            } else if (camposListados.Contains(campo))
+            {
+                txtValorArticulo.Enabled = false; // desactivo el txtbox porque ya damos le listado de marcas / categorías
+
+                // extraemos las marcas o categorias de la bd y seleccionamos solo las descripciones.
+                List<string> opciones = campo == "Marca"
+                    ? new MarcaNegocio().listar().Select(marca => marca.Descripcion).ToList()
+                    : new CategoriaNegocio().listar().Select(categoria => categoria.Descripcion).ToList();
+
+                // cmo tenemos una lista, se debe convertir a una matriz para poder agregarla al rango de items del combobox
+                cmbCriterioArticulo.Items.AddRange(opciones.ToArray());
+            }
+
+            // se setea al índice 0
+            if (cmbCriterioArticulo.Items.Count > 0)
+            {
+                cmbCriterioArticulo.SelectedIndex = 0;
+            }
+
+        }
     }
 }

@@ -189,6 +189,7 @@
             this.cmbCampoArticulo.Name = "cmbCampoArticulo";
             this.cmbCampoArticulo.Size = new System.Drawing.Size(220, 25);
             this.cmbCampoArticulo.TabIndex = 3;
+            this.cmbCampoArticulo.SelectedIndexChanged += new System.EventHandler(this.cmbCampoArticulo_SelectedIndexChanged);
             // 
             // cmbCriterioArticulo
             // 
