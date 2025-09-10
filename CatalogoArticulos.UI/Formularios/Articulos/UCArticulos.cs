@@ -45,7 +45,7 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             catch (Exception ex)
             {
                 MessageBox.Show(
-                   "Ocurrió un error al cargar los artículos. Por favor, intentá nuevamente.",
+                   $"Ocurrió un error al cargar los artículos. Por favor, intentá nuevamente.\n\nDetalle técnico: {ex.Message}",
                    "Error de carga",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error

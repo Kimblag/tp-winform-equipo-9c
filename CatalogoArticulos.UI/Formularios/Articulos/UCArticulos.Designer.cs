@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+
             this.tlpArticulos = new System.Windows.Forms.TableLayoutPanel();
             this.lblTituloArticulos = new System.Windows.Forms.Label();
             this.tlpFiltrosArticulo = new System.Windows.Forms.TableLayoutPanel();

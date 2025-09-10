@@ -41,7 +41,7 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
             catch (Exception ex)
             {
                 MessageBox.Show(
-                   "Ocurrió un error al cargar las categorías. Por favor, intentá nuevamente.",
+                   "Error: " + ex.Message,
                    "Error de carga",
                    MessageBoxButtons.OK,
                    MessageBoxIcon.Error

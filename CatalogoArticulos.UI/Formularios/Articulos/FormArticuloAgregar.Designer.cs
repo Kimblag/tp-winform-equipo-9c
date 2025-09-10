@@ -217,6 +217,7 @@
             this.Controls.Add(this.gpArticulos);
             this.Name = "FormArticuloAgregar";
             this.Text = "FormArticuloAgregar";
+            this.Load += new System.EventHandler(this.FormArticuloAgregar_Load);
             this.gpArticulos.ResumeLayout(false);
             this.gpArticulos.PerformLayout();
             this.ResumeLayout(false);
