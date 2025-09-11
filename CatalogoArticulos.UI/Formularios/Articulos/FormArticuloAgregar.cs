@@ -46,7 +46,23 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 nuevo.Marca = (Marca)cmbMarcaArticulo.SelectedItem;
                 nuevo.Categoria = (Categoria)cmbCategoriaArticulo.SelectedItem;
 
-                negocio.agregar(nuevo);
+                int idArticulo = negocio.agregar(nuevo);
+
+                // agregar imagenes si existen
+                if (lstImagenesArticulo.Items.Count > 0)
+                {
+                    List<string> urls = new List<string>();
+
+                    foreach (var item in lstImagenesArticulo.Items)
+                    {
+                        string url = (string)item;
+                        urls.Add(url);
+                    }
+
+                    ImagenNegocio imagenNegocio = new ImagenNegocio();
+                    imagenNegocio.guardar(idArticulo, urls);
+                }
+
                 this.DialogResult = DialogResult.OK;
                 MessageBox.Show("Artículo agregado correctamente.");
                 Close(); // Cierra el form después de agregar

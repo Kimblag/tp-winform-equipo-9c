@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace CatalogoArticulos.Negocio
 {
@@ -51,12 +52,32 @@ namespace CatalogoArticulos.Negocio
             comando.Connection = conexion;
             try
             {
-                comando.Connection.Open();
+                if (conexion.State != ConnectionState.Open) 
+                { 
+                    // valido primero si ya está abierta para que no la vuelva a abrir
+                    comando.Connection.Open();
+                }
                 comando.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+
+        public int EjecutarAccionConIdentity()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                comando.Connection.Open();
+                object resultado = comando.ExecuteScalar();
+                int ultimoId = Convert.ToInt32(resultado);
+                return ultimoId;
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
@@ -73,6 +94,11 @@ namespace CatalogoArticulos.Negocio
         public void setearParametro(string nombre, object valor)
         {
             comando.Parameters.AddWithValue(nombre, valor);
+        }
+
+        public void LimpiarParametros()
+        {
+            comando.Parameters.Clear();
         }
 
     }

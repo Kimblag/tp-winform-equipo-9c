@@ -421,13 +421,13 @@
             this.tlpCampoAgregarImagen.RowCount = 2;
             this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpCampoAgregarImagen.Size = new System.Drawing.Size(400, 76);
+            this.tlpCampoAgregarImagen.Size = new System.Drawing.Size(410, 76);
             this.tlpCampoAgregarImagen.TabIndex = 2;
             // 
             // btnAgregarImagenArticulo
             // 
             this.btnAgregarImagenArticulo.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAgregarImagenArticulo.Location = new System.Drawing.Point(310, 41);
+            this.btnAgregarImagenArticulo.Location = new System.Drawing.Point(320, 41);
             this.btnAgregarImagenArticulo.Margin = new System.Windows.Forms.Padding(0, 3, 0, 5);
             this.btnAgregarImagenArticulo.Name = "btnAgregarImagenArticulo";
             this.btnAgregarImagenArticulo.Size = new System.Drawing.Size(90, 30);
@@ -440,7 +440,7 @@
             // 
             this.tbUrlImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbUrlImagenArticulo.Location = new System.Drawing.Point(0, 43);
-            this.tbUrlImagenArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 10, 5);
+            this.tbUrlImagenArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 20, 5);
             this.tbUrlImagenArticulo.MaxLength = 300;
             this.tbUrlImagenArticulo.Name = "tbUrlImagenArticulo";
             this.tbUrlImagenArticulo.Size = new System.Drawing.Size(300, 25);
@@ -454,7 +454,7 @@
             this.lblUrlImagen.Location = new System.Drawing.Point(0, 5);
             this.lblUrlImagen.Margin = new System.Windows.Forms.Padding(0, 5, 10, 0);
             this.lblUrlImagen.Name = "lblUrlImagen";
-            this.lblUrlImagen.Size = new System.Drawing.Size(300, 33);
+            this.lblUrlImagen.Size = new System.Drawing.Size(310, 33);
             this.lblUrlImagen.TabIndex = 2;
             this.lblUrlImagen.Text = "URL de imagen";
             this.lblUrlImagen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
