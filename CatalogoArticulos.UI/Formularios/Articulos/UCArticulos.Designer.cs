@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-
             this.tlpArticulos = new System.Windows.Forms.TableLayoutPanel();
             this.lblTituloArticulos = new System.Windows.Forms.Label();
             this.tlpFiltrosArticulo = new System.Windows.Forms.TableLayoutPanel();
@@ -518,8 +517,8 @@
             this.tlpNavegacionImagenArticulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpNavegacionImagenArticulo.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tlpNavegacionImagenArticulo.Controls.Add(this.btnImagenAnterior, 0, 0);
-            this.tlpNavegacionImagenArticulo.Controls.Add(this.btnImagenSiguiente, 2, 0);
             this.tlpNavegacionImagenArticulo.Controls.Add(this.lblIndiceImagen, 1, 0);
+            this.tlpNavegacionImagenArticulo.Controls.Add(this.btnImagenSiguiente, 2, 0);
             this.tlpNavegacionImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpNavegacionImagenArticulo.Location = new System.Drawing.Point(0, 150);
             this.tlpNavegacionImagenArticulo.Margin = new System.Windows.Forms.Padding(0);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CatalogoArticulos.Comun
@@ -33,6 +34,14 @@ namespace CatalogoArticulos.Comun
             return EsTextoObligatorio(texto)
                 && TieneLongitudMinima(texto, minimo)
                 && TieneLongitudMaxima(texto, maximo);
+        }
+
+        public static bool EsUrlDeImagen(string url)
+        {
+            // métdo para validar que las urls sean válidas 
+            return !string.IsNullOrWhiteSpace(url)
+                && (url.StartsWith("http://")
+                    || url.StartsWith("https://"));
         }
 
     }
