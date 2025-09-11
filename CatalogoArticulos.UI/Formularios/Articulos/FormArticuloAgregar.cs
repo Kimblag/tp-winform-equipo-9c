@@ -78,5 +78,23 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 MessageBox.Show(ex.ToString());
             }
         }
+
+        private void txtImagenArticulo_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtImagenArticulo.Text);
+
+        }
+
+        private void cargarImagen(string imagen)
+        {
+            try
+            {
+                pbxImagenArticulo.Load(imagen);
+            }
+            catch (Exception)
+            {
+                pbxImagenArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
+        }
     }
 }
