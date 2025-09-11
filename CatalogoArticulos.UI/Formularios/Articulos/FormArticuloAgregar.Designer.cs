@@ -54,16 +54,16 @@
             this.lblIndiceImagen = new System.Windows.Forms.Label();
             this.btnImagenSiguiente = new System.Windows.Forms.Button();
             this.flpAgregarImagen = new System.Windows.Forms.FlowLayoutPanel();
-            this.tbUrlImagenArticulo = new System.Windows.Forms.TextBox();
+            this.tlpCampoAgregarImagen = new System.Windows.Forms.TableLayoutPanel();
             this.btnAgregarImagenArticulo = new System.Windows.Forms.Button();
+            this.tbUrlImagenArticulo = new System.Windows.Forms.TextBox();
+            this.lblUrlImagen = new System.Windows.Forms.Label();
             this.lstImagenesArticulo = new System.Windows.Forms.ListBox();
             this.pbPreviewImagenArticulo = new System.Windows.Forms.PictureBox();
             this.lblMensajeImagen = new System.Windows.Forms.Label();
             this.flpBotonesArticulo = new System.Windows.Forms.FlowLayoutPanel();
             this.btnEliminarImagenSeleccionada = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.tlpCampoAgregarImagen = new System.Windows.Forms.TableLayoutPanel();
-            this.lblUrlImagen = new System.Windows.Forms.Label();
             this.gpArticulos.SuspendLayout();
             this.tlpCamposArticulo.SuspendLayout();
             this.tlpFormularioArticulo.SuspendLayout();
@@ -71,10 +71,10 @@
             this.tlpImagenesArticulo.SuspendLayout();
             this.tlpNavegacionImagen.SuspendLayout();
             this.flpAgregarImagen.SuspendLayout();
+            this.tlpCampoAgregarImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreviewImagenArticulo)).BeginInit();
             this.flpBotonesArticulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            this.tlpCampoAgregarImagen.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpArticulos
@@ -405,15 +405,24 @@
             this.flpAgregarImagen.Size = new System.Drawing.Size(422, 100);
             this.flpAgregarImagen.TabIndex = 0;
             // 
-            // tbUrlImagenArticulo
+            // tlpCampoAgregarImagen
             // 
-            this.tbUrlImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbUrlImagenArticulo.Location = new System.Drawing.Point(0, 43);
-            this.tbUrlImagenArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 10, 5);
-            this.tbUrlImagenArticulo.MaxLength = 300;
-            this.tbUrlImagenArticulo.Name = "tbUrlImagenArticulo";
-            this.tbUrlImagenArticulo.Size = new System.Drawing.Size(300, 25);
-            this.tbUrlImagenArticulo.TabIndex = 0;
+            this.tlpCampoAgregarImagen.AutoSize = true;
+            this.tlpCampoAgregarImagen.ColumnCount = 2;
+            this.tlpCampoAgregarImagen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tlpCampoAgregarImagen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpCampoAgregarImagen.Controls.Add(this.btnAgregarImagenArticulo, 1, 1);
+            this.tlpCampoAgregarImagen.Controls.Add(this.tbUrlImagenArticulo, 0, 1);
+            this.tlpCampoAgregarImagen.Controls.Add(this.lblUrlImagen, 0, 0);
+            this.tlpCampoAgregarImagen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tlpCampoAgregarImagen.Location = new System.Drawing.Point(0, 0);
+            this.tlpCampoAgregarImagen.Margin = new System.Windows.Forms.Padding(0);
+            this.tlpCampoAgregarImagen.Name = "tlpCampoAgregarImagen";
+            this.tlpCampoAgregarImagen.RowCount = 2;
+            this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpCampoAgregarImagen.Size = new System.Drawing.Size(400, 76);
+            this.tlpCampoAgregarImagen.TabIndex = 2;
             // 
             // btnAgregarImagenArticulo
             // 
@@ -426,6 +435,29 @@
             this.btnAgregarImagenArticulo.Text = "Agregar";
             this.btnAgregarImagenArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarImagenArticulo.Click += new System.EventHandler(this.btnAgregarImagenArticulo_Click);
+            // 
+            // tbUrlImagenArticulo
+            // 
+            this.tbUrlImagenArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbUrlImagenArticulo.Location = new System.Drawing.Point(0, 43);
+            this.tbUrlImagenArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 10, 5);
+            this.tbUrlImagenArticulo.MaxLength = 300;
+            this.tbUrlImagenArticulo.Name = "tbUrlImagenArticulo";
+            this.tbUrlImagenArticulo.Size = new System.Drawing.Size(300, 25);
+            this.tbUrlImagenArticulo.TabIndex = 0;
+            // 
+            // lblUrlImagen
+            // 
+            this.lblUrlImagen.AutoSize = true;
+            this.lblUrlImagen.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblUrlImagen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUrlImagen.Location = new System.Drawing.Point(0, 5);
+            this.lblUrlImagen.Margin = new System.Windows.Forms.Padding(0, 5, 10, 0);
+            this.lblUrlImagen.Name = "lblUrlImagen";
+            this.lblUrlImagen.Size = new System.Drawing.Size(300, 33);
+            this.lblUrlImagen.TabIndex = 2;
+            this.lblUrlImagen.Text = "URL de imagen";
+            this.lblUrlImagen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lstImagenesArticulo
             // 
@@ -495,38 +527,6 @@
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
             // 
-            // tlpCampoAgregarImagen
-            // 
-            this.tlpCampoAgregarImagen.AutoSize = true;
-            this.tlpCampoAgregarImagen.ColumnCount = 2;
-            this.tlpCampoAgregarImagen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tlpCampoAgregarImagen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpCampoAgregarImagen.Controls.Add(this.btnAgregarImagenArticulo, 1, 1);
-            this.tlpCampoAgregarImagen.Controls.Add(this.tbUrlImagenArticulo, 0, 1);
-            this.tlpCampoAgregarImagen.Controls.Add(this.lblUrlImagen, 0, 0);
-            this.tlpCampoAgregarImagen.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpCampoAgregarImagen.Location = new System.Drawing.Point(0, 0);
-            this.tlpCampoAgregarImagen.Margin = new System.Windows.Forms.Padding(0);
-            this.tlpCampoAgregarImagen.Name = "tlpCampoAgregarImagen";
-            this.tlpCampoAgregarImagen.RowCount = 2;
-            this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpCampoAgregarImagen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpCampoAgregarImagen.Size = new System.Drawing.Size(400, 76);
-            this.tlpCampoAgregarImagen.TabIndex = 2;
-            // 
-            // lblUrlImagen
-            // 
-            this.lblUrlImagen.AutoSize = true;
-            this.lblUrlImagen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblUrlImagen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUrlImagen.Location = new System.Drawing.Point(0, 5);
-            this.lblUrlImagen.Margin = new System.Windows.Forms.Padding(0, 5, 10, 0);
-            this.lblUrlImagen.Name = "lblUrlImagen";
-            this.lblUrlImagen.Size = new System.Drawing.Size(300, 33);
-            this.lblUrlImagen.TabIndex = 2;
-            this.lblUrlImagen.Text = "URL de imagen";
-            this.lblUrlImagen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // FormArticuloAgregar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -556,11 +556,11 @@
             this.tlpNavegacionImagen.ResumeLayout(false);
             this.flpAgregarImagen.ResumeLayout(false);
             this.flpAgregarImagen.PerformLayout();
+            this.tlpCampoAgregarImagen.ResumeLayout(false);
+            this.tlpCampoAgregarImagen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreviewImagenArticulo)).EndInit();
             this.flpBotonesArticulo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            this.tlpCampoAgregarImagen.ResumeLayout(false);
-            this.tlpCampoAgregarImagen.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

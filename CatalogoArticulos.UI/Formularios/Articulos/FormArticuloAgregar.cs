@@ -259,21 +259,24 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 {
                     indiceImagenActual = 0;
                     btnEliminarImagenSeleccionada.Visible = false;
-                } else if (indexAEliminar >= lstImagenesArticulo.Items.Count)
+                }
+                else if (indexAEliminar >= lstImagenesArticulo.Items.Count)
                 {
                     indiceImagenActual = lstImagenesArticulo.Items.Count - 1;
-                } else
+                }
+                else
                 {
                     indiceImagenActual = indexAEliminar;
                 }
 
                 MostrarImagenActual();
-            } else
+            }
+            else
             {
                 MessageBox.Show(
-                    "Seleccioná una imagen para eliminar.", 
-                    "Eliminar imagen", 
-                    MessageBoxButtons.OK, 
+                    "Seleccioná una imagen para eliminar.",
+                    "Eliminar imagen",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
         }

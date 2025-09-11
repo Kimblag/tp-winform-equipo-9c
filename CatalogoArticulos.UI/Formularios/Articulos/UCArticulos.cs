@@ -204,11 +204,11 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             switch (criterio)
             {
                 case "Mayor que":
-                    return articulos.Where(a => a.Precio > valorDecimal).ToList();
+                    return articulos.FindAll(a => a.Precio > valorDecimal).ToList();
                 case "Menor que":
-                    return articulos.Where(a => a.Precio < valorDecimal).ToList();
+                    return articulos.FindAll(a => a.Precio < valorDecimal).ToList();
                 case "Igual que":
-                    return articulos.Where(a => a.Precio == valorDecimal).ToList();
+                    return articulos.FindAll(a => a.Precio == valorDecimal).ToList();
                 default:
                     MessageBox.Show("Criterio no válido para Precio.");
                     return new List<Articulo>();

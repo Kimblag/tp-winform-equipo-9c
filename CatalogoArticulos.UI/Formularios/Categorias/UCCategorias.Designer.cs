@@ -70,7 +70,7 @@
             this.txtBuscarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.txtBuscarCategoria.MaxLength = 50;
             this.txtBuscarCategoria.Name = "txtBuscarCategoria";
-            this.txtBuscarCategoria.Size = new System.Drawing.Size(250, 25);
+            this.txtBuscarCategoria.Size = new System.Drawing.Size(227, 25);
             this.txtBuscarCategoria.TabIndex = 1;
             this.txtBuscarCategoria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarCategoria_KeyDown);
             // 
@@ -88,7 +88,7 @@
             this.tlpBuscarMarca.RowCount = 2;
             this.tlpBuscarMarca.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tlpBuscarMarca.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpBuscarMarca.Size = new System.Drawing.Size(250, 55);
+            this.tlpBuscarMarca.Size = new System.Drawing.Size(227, 55);
             this.tlpBuscarMarca.TabIndex = 6;
             // 
             // lblBuscarCategoria
@@ -100,7 +100,7 @@
             this.lblBuscarCategoria.Location = new System.Drawing.Point(0, 0);
             this.lblBuscarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.lblBuscarCategoria.Name = "lblBuscarCategoria";
-            this.lblBuscarCategoria.Size = new System.Drawing.Size(250, 17);
+            this.lblBuscarCategoria.Size = new System.Drawing.Size(227, 17);
             this.lblBuscarCategoria.TabIndex = 0;
             this.lblBuscarCategoria.Text = "Buscar por nombre";
             this.lblBuscarCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -224,7 +224,7 @@
             this.dgvCategoria.AllowUserToAddRows = false;
             this.dgvCategoria.AllowUserToDeleteRows = false;
             this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCategoria.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCategoria.BackgroundColor = System.Drawing.Color.LightGray;
             this.dgvCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -252,17 +252,21 @@
             // 
             // cmbOrdenarCategoria
             // 
+            this.cmbOrdenarCategoria.AutoCompleteCustomSource.AddRange(new string[] {
+            "Sin ordernar",
+            "Descripción (A-Z)",
+            "Descripción (Z-A)"});
             this.cmbOrdenarCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOrdenarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cmbOrdenarCategoria.FormattingEnabled = true;
             this.cmbOrdenarCategoria.Items.AddRange(new object[] {
             "Sin ordenar",
-            "Nombre (A-Z)",
-            "Nombre (Z-A)"});
+            "Descripción (A-Z)",
+            "Descripción (Z-A)"});
             this.cmbOrdenarCategoria.Location = new System.Drawing.Point(0, 25);
             this.cmbOrdenarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.cmbOrdenarCategoria.Name = "cmbOrdenarCategoria";
-            this.cmbOrdenarCategoria.Size = new System.Drawing.Size(250, 25);
+            this.cmbOrdenarCategoria.Size = new System.Drawing.Size(223, 25);
             this.cmbOrdenarCategoria.TabIndex = 3;
             // 
             // tlpOrdenarCategoria
@@ -274,13 +278,13 @@
             this.tlpOrdenarCategoria.Controls.Add(this.lblOrdenarCategoria, 0, 0);
             this.tlpOrdenarCategoria.Controls.Add(this.cmbOrdenarCategoria, 0, 1);
             this.tlpOrdenarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tlpOrdenarCategoria.Location = new System.Drawing.Point(290, 10);
+            this.tlpOrdenarCategoria.Location = new System.Drawing.Point(267, 10);
             this.tlpOrdenarCategoria.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tlpOrdenarCategoria.Name = "tlpOrdenarCategoria";
             this.tlpOrdenarCategoria.RowCount = 2;
             this.tlpOrdenarCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tlpOrdenarCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpOrdenarCategoria.Size = new System.Drawing.Size(250, 55);
+            this.tlpOrdenarCategoria.Size = new System.Drawing.Size(223, 55);
             this.tlpOrdenarCategoria.TabIndex = 7;
             // 
             // btnLimpiarFiltrosCategoria
@@ -288,23 +292,23 @@
             this.btnLimpiarFiltrosCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.btnLimpiarFiltrosCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btnLimpiarFiltrosCategoria.ForeColor = System.Drawing.Color.Black;
-            this.btnLimpiarFiltrosCategoria.Location = new System.Drawing.Point(129, 3);
+            this.btnLimpiarFiltrosCategoria.Location = new System.Drawing.Point(130, 3);
             this.btnLimpiarFiltrosCategoria.Name = "btnLimpiarFiltrosCategoria";
             this.btnLimpiarFiltrosCategoria.Size = new System.Drawing.Size(120, 30);
             this.btnLimpiarFiltrosCategoria.TabIndex = 5;
             this.btnLimpiarFiltrosCategoria.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosCategoria.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltrosCategoria.Click += new System.EventHandler(this.btnLimpiarFiltrosCategoria_Click);
-
             // 
             // btnAplicarFiltrosCategoria
             // 
+            this.btnAplicarFiltrosCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAplicarFiltrosCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.btnAplicarFiltrosCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btnAplicarFiltrosCategoria.ForeColor = System.Drawing.Color.Black;
             this.btnAplicarFiltrosCategoria.Location = new System.Drawing.Point(3, 3);
             this.btnAplicarFiltrosCategoria.Name = "btnAplicarFiltrosCategoria";
-            this.btnAplicarFiltrosCategoria.Size = new System.Drawing.Size(120, 30);
+            this.btnAplicarFiltrosCategoria.Size = new System.Drawing.Size(121, 30);
             this.btnAplicarFiltrosCategoria.TabIndex = 4;
             this.btnAplicarFiltrosCategoria.Text = "Aplicar filtros";
             this.btnAplicarFiltrosCategoria.UseVisualStyleBackColor = false;
@@ -319,13 +323,13 @@
             this.tlpBotonesFiltros.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpBotonesFiltros.Controls.Add(this.btnLimpiarFiltrosCategoria, 1, 0);
             this.tlpBotonesFiltros.Controls.Add(this.btnAplicarFiltrosCategoria, 0, 0);
-            this.tlpBotonesFiltros.Location = new System.Drawing.Point(354, 18);
+            this.tlpBotonesFiltros.Location = new System.Drawing.Point(402, 18);
             this.tlpBotonesFiltros.Margin = new System.Windows.Forms.Padding(0);
             this.tlpBotonesFiltros.Name = "tlpBotonesFiltros";
             this.tlpBotonesFiltros.RowCount = 1;
             this.tlpBotonesFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpBotonesFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpBotonesFiltros.Size = new System.Drawing.Size(252, 36);
+            this.tlpBotonesFiltros.Size = new System.Drawing.Size(254, 36);
             this.tlpBotonesFiltros.TabIndex = 0;
             // 
             // panelBotonesFiltros
@@ -334,10 +338,10 @@
             this.panelBotonesFiltros.Controls.Add(this.tlpBotonesFiltros);
             this.panelBotonesFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBotonesFiltros.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.panelBotonesFiltros.Location = new System.Drawing.Point(550, 10);
+            this.panelBotonesFiltros.Location = new System.Drawing.Point(500, 10);
             this.panelBotonesFiltros.Margin = new System.Windows.Forms.Padding(0);
             this.panelBotonesFiltros.Name = "panelBotonesFiltros";
-            this.panelBotonesFiltros.Size = new System.Drawing.Size(619, 70);
+            this.panelBotonesFiltros.Size = new System.Drawing.Size(669, 70);
             this.panelBotonesFiltros.TabIndex = 8;
             // 
             // tlpFiltrosCategoria
