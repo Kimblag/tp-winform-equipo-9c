@@ -66,22 +66,6 @@ namespace CatalogoArticulos.Negocio
             }
         }
 
-        public int EjecutarAccionConIdentity()
-        {
-            comando.Connection = conexion;
-            try
-            {
-                comando.Connection.Open();
-                object resultado = comando.ExecuteScalar();
-                int ultimoId = Convert.ToInt32(resultado);
-                return ultimoId;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         public void CerrarConexion()
         {
             if (lector != null)
