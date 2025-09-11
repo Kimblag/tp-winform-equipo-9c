@@ -59,17 +59,17 @@ namespace CatalogoArticulos.Negocio
             }
         }
 
-        return articulos;
-    }
-    catch (Exception ex)
-    {
-        throw ex;
-    }
-    finally
-    {
-        datos.CerrarConexion();
-    }
-}
+                return articulos;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
 
         public void agregar(Articulo nuevo)
