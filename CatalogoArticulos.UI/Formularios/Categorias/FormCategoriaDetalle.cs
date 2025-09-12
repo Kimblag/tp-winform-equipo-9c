@@ -85,8 +85,6 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
             }
         }
 
-
-        
         private void FormCategoriaDetalle_Load(object sender, EventArgs e)
         {
             if (categoriaEditar != null)

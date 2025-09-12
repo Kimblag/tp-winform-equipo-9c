@@ -128,6 +128,7 @@
             this.Controls.Add(this.tlpCategoriaDetalle);
             this.Name = "FormCategoriaDetalle";
             this.Text = "FormCategoriaDetalle";
+            this.Load += new System.EventHandler(this.FormCategoriaDetalle_Load);
             this.tlpCategoriaDetalle.ResumeLayout(false);
             this.tlpCategoriaDetalle.PerformLayout();
             this.flpBotonesCategoria.ResumeLayout(false);

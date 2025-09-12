@@ -224,10 +224,9 @@
             this.dgvCategoria.AllowUserToAddRows = false;
             this.dgvCategoria.AllowUserToDeleteRows = false;
             this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCategoria.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dgvCategoria.BackgroundColor = System.Drawing.Color.White;
             this.dgvCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategoria.GridColor = System.Drawing.Color.LightGray;
             this.dgvCategoria.Location = new System.Drawing.Point(13, 63);
             this.dgvCategoria.Name = "dgvCategoria";
