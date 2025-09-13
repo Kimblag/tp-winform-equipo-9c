@@ -84,18 +84,62 @@ namespace CatalogoArticulos.Negocio
         }
 
 
-        public void eliminar(int idMarca)
+        /*  public void eliminar(int idMarca)
+          {
+              AccesoDatos datos = new AccesoDatos();
+
+              try
+              {
+                  datos.DefinirConsulta($"DELETE MARCAS WHERE Id = {idMarca}");
+                  datos.EjecutarAccion();
+              }
+              catch (Exception ex)
+              {
+                  throw ex;
+              }
+              finally
+              {
+                  datos.CerrarConexion();
+              }
+          }*/
+        public void eliminar(int id)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.DefinirConsulta($"DELETE MARCAS WHERE Id = {idMarca}");
+                if (TieneArticulosAsociados(id))
+                    throw new InvalidOperationException("No se puede eliminar la marca: tiene artículos asociados.");
+                datos.DefinirConsulta($"DELETE FROM MARCAS WHERE Id = {id}");
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public bool TieneArticulosAsociados(int idMarca)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdMarca = " + idMarca;
+                datos.DefinirConsulta(consulta);
+                datos.EjecutarConsulta();
+
+                if (datos.Lector.Read())
+                {
+                    int cant = (int)datos.Lector["Cant"];
+                    return cant > 0;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                throw;
             }
             finally
             {
