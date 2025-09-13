@@ -88,6 +88,8 @@ namespace CatalogoArticulos.Negocio
         {             AccesoDatos datos = new AccesoDatos();
             try
             {
+                if (TieneArticulosAsociados(id))
+                throw new InvalidOperationException("No se puede eliminar la categoría: tiene artículos asociados.");
                 datos.DefinirConsulta($"DELETE FROM CATEGORIAS WHERE Id = {id}");
                 datos.EjecutarAccion();
             }
@@ -100,5 +102,31 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
+        public bool TieneArticulosAsociados(int idCategoria)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                string consulta = "SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdCategoria = " + idCategoria;
+                datos.DefinirConsulta(consulta);
+                datos.EjecutarConsulta();
+
+                if (datos.Lector.Read())
+                {
+                    int cant = (int)datos.Lector["Cant"];
+                    return cant > 0;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+
     }
 }

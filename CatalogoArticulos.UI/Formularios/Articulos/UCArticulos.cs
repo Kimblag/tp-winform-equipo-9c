@@ -388,5 +388,38 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 CargarListadoArticulos();
             }
         }
+
+        private void btnEliminarArticulo_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccioná un artículo primero.",
+                    "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult respuesta = MessageBox.Show(
+                "¿Seguro que querés eliminar el artículo seleccionado?",
+                "Eliminar artículo",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (respuesta != DialogResult.Yes)
+                return;
+
+            Articulo articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            ArticuloNegocio negocio = new ArticuloNegocio();
+
+            try
+            {
+                negocio.eliminar(articuloSeleccionado.Id); // esto borra imágenes + artículo
+                CargarListadoArticulos(); // refrescás el listado
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo eliminar el artículo.\n" + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -309,6 +309,7 @@
             this.btnEliminarArticulo.TabIndex = 0;
             this.btnEliminarArticulo.Text = "Eliminar";
             this.btnEliminarArticulo.UseVisualStyleBackColor = false;
+            this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
             // 
             // btnEditarArticulo
             // 

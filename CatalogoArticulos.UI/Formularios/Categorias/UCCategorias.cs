@@ -88,11 +88,17 @@ namespace CatalogoArticulos.UI.Formularios.Categorias
             {
                 DialogResult respuesta = MessageBox.Show("¡Atención! Se eliminará la categoría seleccionada. ¿Desea continuar?", "Eliminar categoría", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
+                if (respuesta != DialogResult.Yes)
+                    return;
                 categoriaSeleccionada = (Categoria)dgvCategoria.CurrentRow.DataBoundItem;
                 negocio.eliminar(categoriaSeleccionada.Id);
                 CargarListadoCategorias();
 
 
+            }
+            catch (InvalidOperationException invEx)
+            {
+                MessageBox.Show(invEx.Message, "No se puede eliminar la categoría", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {

@@ -175,6 +175,26 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
+        public void eliminar(int idArticulo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.DefinirConsulta("DELETE IMAGENES WHERE IdArticulo = " + idArticulo);
+                datos.EjecutarAccion();
+
+                datos.DefinirConsulta("DELETE ARTICULOS WHERE Id = " + idArticulo);
+                datos.EjecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
 
     }
 }
