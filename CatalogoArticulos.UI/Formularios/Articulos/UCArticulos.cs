@@ -368,5 +368,25 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                 CargarListadoArticulos();
             }
         }
+
+        private void btnEditarArticulo_Click(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccioná un artículo para editar.",
+                    "Aviso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+
+            Articulo articuloSeleccionado = (Articulo)dgvArticulos.CurrentRow.DataBoundItem;
+            FormArticuloAgregar frmArticulo = new FormArticuloAgregar(articuloSeleccionado);
+
+            if (frmArticulo.ShowDialog() == DialogResult.OK)
+            {
+                CargarListadoArticulos();
+            }
+        }
     }
 }

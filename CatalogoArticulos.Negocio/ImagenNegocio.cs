@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CatalogoArticulos.Dominio.Entidades;
 
 namespace CatalogoArticulos.Negocio
 {
@@ -34,6 +36,48 @@ namespace CatalogoArticulos.Negocio
             finally
             {
                 datos.CerrarConexion();
+            }
+        }
+
+        public void eliminar(int id)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.DefinirConsulta("DELETE FROM IMAGENES WHERE Id = @Id");
+                datos.setearParametro("@Id", id);
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                datos.CerrarConexion();
+            }
+
+        }
+
+        public void modificar(int idArticulo, List<Imagen> imagenesEliminadas, List<string> urlsNuevas)
+        {
+            try
+            {
+                if (urlsNuevas != null && urlsNuevas.Count > 0)
+                {
+                    guardar(idArticulo, urlsNuevas);
+                }
+
+                if (imagenesEliminadas != null && imagenesEliminadas.Count > 0)
+                {
+                    foreach (Imagen imagen in imagenesEliminadas)
+                    {
+                        eliminar(imagen.Id);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

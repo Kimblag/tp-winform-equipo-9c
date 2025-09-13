@@ -60,8 +60,8 @@
             this.pbImagenArticulo = new System.Windows.Forms.PictureBox();
             this.tlpNavegacionImagenArticulo = new System.Windows.Forms.TableLayoutPanel();
             this.btnImagenAnterior = new System.Windows.Forms.Button();
-            this.btnImagenSiguiente = new System.Windows.Forms.Button();
             this.lblIndiceImagen = new System.Windows.Forms.Label();
+            this.btnImagenSiguiente = new System.Windows.Forms.Button();
             this.tlpArticulos.SuspendLayout();
             this.tlpFiltrosArticulo.SuspendLayout();
             this.flpBotonesFiltrosArticulo.SuspendLayout();
@@ -319,6 +319,7 @@
             this.btnEditarArticulo.TabIndex = 1;
             this.btnEditarArticulo.Text = "Editar";
             this.btnEditarArticulo.UseVisualStyleBackColor = true;
+            this.btnEditarArticulo.Click += new System.EventHandler(this.btnEditarArticulo_Click);
             // 
             // btnAgregarArticulo
             // 
@@ -350,6 +351,7 @@
             this.dgvArticulos.BackgroundColor = System.Drawing.Color.White;
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 43);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
@@ -540,17 +542,6 @@
             this.btnImagenAnterior.UseVisualStyleBackColor = true;
             this.btnImagenAnterior.Click += new System.EventHandler(this.btnImagenAnterior_Click);
             // 
-            // btnImagenSiguiente
-            // 
-            this.btnImagenSiguiente.Location = new System.Drawing.Point(241, 5);
-            this.btnImagenSiguiente.Margin = new System.Windows.Forms.Padding(5);
-            this.btnImagenSiguiente.Name = "btnImagenSiguiente";
-            this.btnImagenSiguiente.Size = new System.Drawing.Size(30, 30);
-            this.btnImagenSiguiente.TabIndex = 1;
-            this.btnImagenSiguiente.Text = "→";
-            this.btnImagenSiguiente.UseVisualStyleBackColor = true;
-            this.btnImagenSiguiente.Click += new System.EventHandler(this.btnImagenSiguiente_Click);
-            // 
             // lblIndiceImagen
             // 
             this.lblIndiceImagen.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -561,6 +552,17 @@
             this.lblIndiceImagen.TabIndex = 2;
             this.lblIndiceImagen.Text = "1 / N";
             this.lblIndiceImagen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnImagenSiguiente
+            // 
+            this.btnImagenSiguiente.Location = new System.Drawing.Point(241, 5);
+            this.btnImagenSiguiente.Margin = new System.Windows.Forms.Padding(5);
+            this.btnImagenSiguiente.Name = "btnImagenSiguiente";
+            this.btnImagenSiguiente.Size = new System.Drawing.Size(30, 30);
+            this.btnImagenSiguiente.TabIndex = 1;
+            this.btnImagenSiguiente.Text = "→";
+            this.btnImagenSiguiente.UseVisualStyleBackColor = true;
+            this.btnImagenSiguiente.Click += new System.EventHandler(this.btnImagenSiguiente_Click);
             // 
             // UCArticulos
             // 

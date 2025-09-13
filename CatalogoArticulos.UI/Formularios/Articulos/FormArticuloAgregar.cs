@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,55 +17,37 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
     public partial class FormArticuloAgregar : Form
     {
         private int indiceImagenActual = 0;
+        private Articulo articuloEditar; 
+        private List<Imagen> imagenesOriginales; // esto es una copia de las imágenes de un artículo a editar
+
         public FormArticuloAgregar()
         {
             InitializeComponent();
         }
+        public FormArticuloAgregar(Articulo articulo)
+        {
+            InitializeComponent();
+            articuloEditar = articulo;
+            // este atributo servirá para comparar cuando editen lss imágenes
+            imagenesOriginales = new List<Imagen>(articulo.Imagenes);
+        }
      
         private void btnGuardarArticulo_Click(object sender, EventArgs e)
         {
-
             if (!validarCamposArtículo()) return;
-
-            Articulo nuevo = new Articulo();
-            ArticuloNegocio negocio = new ArticuloNegocio();
-
             try
             {
-                nuevo.Codigo = tbCodigoArticulo.Text;
-                nuevo.Nombre = tbNombreArticulo.Text;
-                nuevo.Descripcion = tbDescripcionArticulo.Text;
-
-                // Convierte el precio a decimal
-                decimal precio;
-                if (decimal.TryParse(tbPrecioArticulo.Text, out precio))
-                    nuevo.Precio = precio;
+                if (articuloEditar == null)
+                    guardarNuevoArticulo();
                 else
-                    nuevo.Precio = 0;
+                    modificarArticuloExistente();
 
-                // Marcas y categorías desde los combos
-                nuevo.Marca = (Marca)cmbMarcaArticulo.SelectedItem;
-                nuevo.Categoria = (Categoria)cmbCategoriaArticulo.SelectedItem;
-
-                int idArticulo = negocio.agregar(nuevo);
-
-                // agregar imagenes si existen
-                if (lstImagenesArticulo.Items.Count > 0)
-                {
-                    List<string> urls = new List<string>();
-
-                    foreach (var item in lstImagenesArticulo.Items)
-                    {
-                        string url = (string)item;
-                        urls.Add(url);
-                    }
-
-                    ImagenNegocio imagenNegocio = new ImagenNegocio();
-                    imagenNegocio.guardar(idArticulo, urls);
-                }
+                MessageBox.Show(articuloEditar == null ? "Artículo guardado correctamente." : "Artículo modificado correctamente.",
+                    articuloEditar == null ? "Alta" : "Edición",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
-                MessageBox.Show("Artículo agregado correctamente.");
                 Close(); // Cierra el form después de agregar
             }
             catch (Exception ex)
@@ -83,7 +66,6 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             MarcaNegocio marcaNegocio = new MarcaNegocio();
             CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
 
-            CargaImagenDefaultInicial();
             try
             {
                 cmbMarcaArticulo.DataSource = marcaNegocio.listar();
@@ -97,6 +79,33 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+            }
+
+            // si no hay una marca para editar
+            if (articuloEditar == null)
+            {
+                CargaImagenDefaultInicial();
+            } else
+            {
+                tbCodigoArticulo.Text = articuloEditar.Codigo;
+                tbNombreArticulo.Text = articuloEditar.Nombre;
+                if (!string.IsNullOrEmpty(articuloEditar.Descripcion))
+                {
+                    tbDescripcionArticulo.Text = articuloEditar.Descripcion;
+                }
+                tbPrecioArticulo.Text = articuloEditar.Precio.ToString();
+                cmbMarcaArticulo.SelectedValue = articuloEditar.Marca.Id;
+                cmbCategoriaArticulo.SelectedValue = articuloEditar.Categoria.Id;
+                
+                // validar si el artículo tiene imágenes
+                if (articuloEditar.Imagenes.Count > 0)
+                {
+                    foreach (Imagen imagen in articuloEditar.Imagenes)
+                    {
+                        lstImagenesArticulo.Items.Add(imagen.Url);
+                    }
+                    MostrarImagenActual();
+                }
             }
         }
 
@@ -188,8 +197,6 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
 
             indiceImagenActual = lstImagenesArticulo.Items.Count - 1;
             MostrarImagenActual();
-
-           
         }
 
 
@@ -221,7 +228,7 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
             {
                 pbPreviewImagenArticulo.Load(url);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 pbPreviewImagenArticulo.Image = Properties.Resources.imagenDefault;
             }
@@ -296,5 +303,133 @@ namespace CatalogoArticulos.UI.Formularios.Articulos
                     MessageBoxIcon.Information);
             }
         }
+
+        private void guardarNuevoArticulo()
+        {
+            Articulo nuevo = construirArticuloDesdeFormulario();
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            int idArticulo = negocio.agregar(nuevo);
+            // agregar imagenes si existen
+            List<string> urls = obtenerUrlsDesdeListBox();
+            if (urls.Count > 0)
+            {
+                ImagenNegocio imagenNegocio = new ImagenNegocio();
+                imagenNegocio.guardar(idArticulo, urls);
+            }
+        }
+
+        private void modificarArticuloExistente()
+        {
+            actualizarArticuloDesdeFormulario(articuloEditar);
+
+            ArticuloNegocio negocio = new ArticuloNegocio();
+            negocio.modificar(articuloEditar);
+
+            List<string> urlsActuales = obtenerUrlsDesdeListBox();
+            List<Imagen> imagenesEliminadas = obtenerImagenesEliminadas(urlsActuales);
+            List<string> urlsNuevas = obtenerUrlsNuevas(urlsActuales);
+
+            ImagenNegocio imagenNegocio = new ImagenNegocio();
+            imagenNegocio.modificar(articuloEditar.Id, imagenesEliminadas, urlsNuevas);
+        }
+
+
+        private Articulo construirArticuloDesdeFormulario()
+        {
+            Articulo nuevo = new Articulo
+            {
+                Codigo = tbCodigoArticulo.Text.Trim(),
+                Nombre = tbNombreArticulo.Text.Trim(),
+                Descripcion = tbDescripcionArticulo.Text.Trim(),
+                Marca = (Marca)cmbMarcaArticulo.SelectedItem,
+                Categoria = (Categoria)cmbCategoriaArticulo.SelectedItem
+            };
+
+            decimal precio;
+            if (decimal.TryParse(tbPrecioArticulo.Text.Trim(), out precio))
+                nuevo.Precio = precio;
+            else
+                nuevo.Precio = 0;
+
+            return nuevo;
+        }
+
+
+        private void actualizarArticuloDesdeFormulario(Articulo articuloEditar)
+        {
+            articuloEditar.Codigo = tbCodigoArticulo.Text;
+            articuloEditar.Nombre = tbNombreArticulo.Text;
+            articuloEditar.Descripcion = tbDescripcionArticulo.Text;
+            articuloEditar.Marca = (Marca)cmbMarcaArticulo.SelectedItem;
+            articuloEditar.Categoria = (Categoria)cmbCategoriaArticulo.SelectedItem;
+
+            decimal precio;
+            if (decimal.TryParse(tbPrecioArticulo.Text, out precio))
+                articuloEditar.Precio = precio;
+            else
+                articuloEditar.Precio = 0;
+        }
+
+
+        private List<string> obtenerUrlsDesdeListBox()
+        {
+            List<string> urls = new List<string>();
+            foreach (var item in lstImagenesArticulo.Items)
+            {
+                urls.Add((string)item);
+            }
+            return urls;
+        }
+
+
+        private List<Imagen> obtenerImagenesEliminadas(List<string> urlsActuales)
+        {
+            List<Imagen> eliminadas = new List<Imagen>();
+            foreach (Imagen img in imagenesOriginales)
+            {
+                bool encontrada = false;
+                foreach (string url in urlsActuales)
+                {
+                    if (img.Url == url)
+                    {
+                        encontrada = true;
+                        break;
+                    }
+                }
+                if (!encontrada)
+                    eliminadas.Add(img);
+            }
+            return eliminadas;
+        }
+
+        private List<string> obtenerUrlsNuevas(List<string> urlsActuales)
+        {
+            List<string> urlsOriginales = new List<string>();
+            foreach (Imagen img in imagenesOriginales)
+            {
+                urlsOriginales.Add(img.Url);
+            }
+
+            List<string> nuevas = new List<string>();
+            foreach (string url in urlsActuales)
+            {
+                bool yaExiste = false;
+                foreach (string original in urlsOriginales)
+                {
+                    if (url == original)
+                    {
+                        yaExiste = true;
+                        break;
+                    }
+                }
+
+                if (!yaExiste)
+                    nuevas.Add(url);
+            }
+
+            return nuevas;
+        }
+
     }
 }

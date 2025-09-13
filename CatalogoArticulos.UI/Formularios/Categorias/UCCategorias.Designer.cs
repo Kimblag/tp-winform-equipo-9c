@@ -227,6 +227,7 @@
             this.dgvCategoria.BackgroundColor = System.Drawing.Color.White;
             this.dgvCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategoria.GridColor = System.Drawing.Color.LightGray;
             this.dgvCategoria.Location = new System.Drawing.Point(13, 63);
             this.dgvCategoria.Name = "dgvCategoria";

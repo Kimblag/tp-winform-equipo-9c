@@ -200,6 +200,7 @@
             this.dgvMarcas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvMarcas.GridColor = System.Drawing.Color.LightGray;
             this.dgvMarcas.Location = new System.Drawing.Point(13, 63);
             this.dgvMarcas.Name = "dgvMarcas";

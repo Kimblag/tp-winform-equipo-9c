@@ -20,7 +20,7 @@ namespace CatalogoArticulos.Negocio
             try
             {
         
-            datos.DefinirConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Descripcion Marca, C.Descripcion Categoria, I.ImagenUrl FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+            datos.DefinirConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion, A.Precio, M.Id IdMarca, M.Descripcion Marca, C.Id IdCategoria, C.Descripcion Categoria, I.Id ImagenId, I.ImagenUrl FROM ARTICULOS A JOIN MARCAS M ON A.IdMarca = M.Id JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
             datos.EjecutarConsulta();
             lector = datos.Lector;
 
@@ -28,6 +28,7 @@ namespace CatalogoArticulos.Negocio
             {
                 int id = (int)lector["Id"];
                 string url = lector["ImagenUrl"] != DBNull.Value ? (string)lector["ImagenUrl"] : null;
+
 
                 // primero busco si ya existe el artículo en el listado
                 Articulo articuloExistente = articulos.Find(a => a.Id == id);
@@ -42,12 +43,15 @@ namespace CatalogoArticulos.Negocio
                         Nombre = (string)lector["Nombre"],
                         Descripcion = (string)lector["Descripcion"],
                         Precio = (decimal)lector["Precio"],
-                        Marca = new Marca { Descripcion = (string)lector["Marca"] },
-                        Categoria = new Categoria { Descripcion = (string)lector["Categoria"] }
+                        Marca = new Marca { Id = (int)lector["IdMarca"], Descripcion = (string)lector["Marca"] },
+                        Categoria = new Categoria { Id = (int)lector["IdCategoria"], Descripcion = (string)lector["Categoria"] }
                     };
 
                     if (!string.IsNullOrWhiteSpace(url))
-                        nuevoArticulo.Imagenes.Add(new Imagen { Url = url });
+                        {
+                            int idUrl = (int)lector["ImagenId"];
+                            nuevoArticulo.Imagenes.Add(new Imagen { Id = idUrl, Url = url });
+                        }
 
                     articulos.Add(nuevoArticulo);
                 }
@@ -55,7 +59,10 @@ namespace CatalogoArticulos.Negocio
                 {
                     // si ya existe, solo agrego la imagen al listado.
                     if (!string.IsNullOrWhiteSpace(url))
-                        articuloExistente.Imagenes.Add(new Imagen { Url = url });
+                    {
+                        int idUrl = (int)lector["ImagenId"];
+                        articuloExistente.Imagenes.Add(new Imagen { Id = idUrl, Url = url });
+                    }
                 }
             }
 
@@ -139,6 +146,34 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
             
+        }
+
+
+        public void modificar(Articulo articuloEditar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.DefinirConsulta("UPDATE ARTICULOS SET Codigo = @Codigo, Nombre = @Nombre, Descripcion = @Descripcion, IdMarca = @IdMarca, IdCategoria = @IdCategoria, Precio = @Precio WHERE Id = @Id");
+
+                datos.setearParametro("@Id", articuloEditar.Id);
+                datos.setearParametro("@Codigo", articuloEditar.Codigo);
+                datos.setearParametro("@Nombre", articuloEditar.Nombre);
+                datos.setearParametro("@Descripcion", articuloEditar.Descripcion);
+                datos.setearParametro("@IdMarca", articuloEditar.Marca.Id);
+                datos.setearParametro("@IdCategoria", articuloEditar.Categoria.Id);
+                datos.setearParametro("@Precio", articuloEditar.Precio);
+
+                datos.EjecutarAccion();
+            }
+            catch (Exception)
+            {
+                throw;
+            } finally
+            {
+                datos.CerrarConexion();
+            }
         }
 
     }
