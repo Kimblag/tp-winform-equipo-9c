@@ -48,29 +48,32 @@ namespace CatalogoArticulos.Negocio
         public void agregar(Marca nuevaMarca)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.DefinirConsulta($"INSERT INTO MARCAS (Descripcion) VALUES('{nuevaMarca.Descripcion}')");
+                datos.DefinirConsulta("INSERT INTO MARCAS (Descripcion) VALUES (@descripcion)");
+                datos.LimpiarParametros();
+                datos.setearParametro("@descripcion", nuevaMarca.Descripcion);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
             {
                 throw ex;
-            } finally
+            }
+            finally
             {
                 datos.CerrarConexion();
             }
         }
 
-
         public void modificar(Marca marcaEditar)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.DefinirConsulta($"UPDATE MARCAS SET Descripcion = '{marcaEditar.Descripcion}' WHERE Id = {marcaEditar.Id}");
+                datos.DefinirConsulta("UPDATE MARCAS SET Descripcion = @descripcion WHERE Id = @id");
+                datos.LimpiarParametros();
+                datos.setearParametro("@descripcion", marcaEditar.Descripcion);
+                datos.setearParametro("@id", marcaEditar.Id);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -90,7 +93,10 @@ namespace CatalogoArticulos.Negocio
             {
                 if (TieneArticulosAsociados(id))
                     throw new InvalidOperationException("No se puede eliminar la marca: tiene artículos asociados.");
-                datos.DefinirConsulta($"DELETE FROM MARCAS WHERE Id = {id}");
+
+                datos.DefinirConsulta("DELETE FROM MARCAS WHERE Id = @id");
+                datos.LimpiarParametros();
+                datos.setearParametro("@id", id);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -102,13 +108,15 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
+
         public bool TieneArticulosAsociados(int idMarca)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdMarca = " + idMarca;
-                datos.DefinirConsulta(consulta);
+                datos.DefinirConsulta("SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdMarca = @idMarca");
+                datos.LimpiarParametros();
+                datos.setearParametro("@idMarca", idMarca);
                 datos.EjecutarConsulta();
 
                 if (datos.Lector.Read())

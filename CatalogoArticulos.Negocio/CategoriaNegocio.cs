@@ -48,10 +48,11 @@ namespace CatalogoArticulos.Negocio
         public void agregar(Categoria nuevaCategoria)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.DefinirConsulta($"INSERT INTO CATEGORIAS (Descripcion) VALUES('{nuevaCategoria.Descripcion}')");
+                datos.DefinirConsulta("INSERT INTO CATEGORIAS (Descripcion) VALUES (@descripcion)");
+                datos.LimpiarParametros();
+                datos.setearParametro("@descripcion", nuevaCategoria.Descripcion);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -64,14 +65,15 @@ namespace CatalogoArticulos.Negocio
             }
         }
 
-
         public void modificar(Categoria categoriaEditar)
         {
             AccesoDatos datos = new AccesoDatos();
-
             try
             {
-                datos.DefinirConsulta($"UPDATE CATEGORIAS SET Descripcion = '{categoriaEditar.Descripcion}' WHERE Id = {categoriaEditar.Id}");
+                datos.DefinirConsulta("UPDATE CATEGORIAS SET Descripcion = @descripcion WHERE Id = @id");
+                datos.LimpiarParametros();
+                datos.setearParametro("@descripcion", categoriaEditar.Descripcion);
+                datos.setearParametro("@id", categoriaEditar.Id);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -85,12 +87,16 @@ namespace CatalogoArticulos.Negocio
         }
 
         public void eliminar(int id)
-        {             AccesoDatos datos = new AccesoDatos();
+        {
+            AccesoDatos datos = new AccesoDatos();
             try
             {
                 if (TieneArticulosAsociados(id))
-                throw new InvalidOperationException("No se puede eliminar la categoría: tiene artículos asociados.");
-                datos.DefinirConsulta($"DELETE FROM CATEGORIAS WHERE Id = {id}");
+                    throw new InvalidOperationException("No se puede eliminar la categoría: tiene artículos asociados.");
+
+                datos.DefinirConsulta("DELETE FROM CATEGORIAS WHERE Id = @id");
+                datos.LimpiarParametros();
+                datos.setearParametro("@id", id);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -102,13 +108,15 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
+
         public bool TieneArticulosAsociados(int idCategoria)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdCategoria = " + idCategoria;
-                datos.DefinirConsulta(consulta);
+                datos.DefinirConsulta("SELECT COUNT(*) AS Cant FROM ARTICULOS WHERE IdCategoria = @idCategoria");
+                datos.LimpiarParametros();
+                datos.setearParametro("@idCategoria", idCategoria);
                 datos.EjecutarConsulta();
 
                 if (datos.Lector.Read())
@@ -127,6 +135,5 @@ namespace CatalogoArticulos.Negocio
                 datos.CerrarConexion();
             }
         }
-
     }
 }
