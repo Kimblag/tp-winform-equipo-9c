@@ -86,7 +86,7 @@ namespace CatalogoArticulos.Negocio
             try
             {
                 datos.DefinirConsulta("INSERT INTO ARTICULOS (Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio) " +
-                                     "VALUES (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
+                                     "OUTPUT inserted.Id VALUES (@Codigo, @Nombre, @Descripcion, @IdMarca, @IdCategoria, @Precio)");
 
                 datos.setearParametro("@Codigo", nuevo.Codigo);
                 datos.setearParametro("@Nombre", nuevo.Nombre);
@@ -95,9 +95,8 @@ namespace CatalogoArticulos.Negocio
                 datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
                 datos.setearParametro("@Precio", nuevo.Precio);
 
-                datos.EjecutarAccion();
+                int idArticulo = datos.EjecutarAccionEscalar();
                 datos.LimpiarParametros();
-                int idArticulo = ObtenerIdArticulo(nuevo);
                 return idArticulo;
             }
             catch (Exception ex)
@@ -108,44 +107,6 @@ namespace CatalogoArticulos.Negocio
             {
                 datos.CerrarConexion();
             }
-        }
-
-
-        public int ObtenerIdArticulo(Articulo nuevo)
-        {
-            AccesoDatos datos = new AccesoDatos();
-
-            try
-            {
-                //Buscar el Id por todos los campos
-                datos.DefinirConsulta("SELECT Id FROM ARTICULOS WHERE Codigo = @Codigo AND Nombre = @Nombre AND Descripcion = @Descripcion AND IdMarca = @IdMarca AND IdCategoria = @IdCategoria AND Precio = @Precio");
-
-                datos.setearParametro("@Codigo", nuevo.Codigo);
-                datos.setearParametro("@Nombre", nuevo.Nombre);
-                datos.setearParametro("@Descripcion", nuevo.Descripcion);
-                datos.setearParametro("@IdMarca", nuevo.Marca.Id);
-                datos.setearParametro("@IdCategoria", nuevo.Categoria.Id);
-                datos.setearParametro("@Precio", nuevo.Precio);
-
-                datos.EjecutarConsulta();
-
-                int idArticulo = 0;
-                if (datos.Lector.Read())
-                {
-                    idArticulo = (int)datos.Lector["Id"];
-                }
-
-                return idArticulo;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                datos.CerrarConexion();
-            }
-            
         }
 
 

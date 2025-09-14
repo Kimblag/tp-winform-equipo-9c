@@ -70,8 +70,8 @@
             this.txtBuscarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.txtBuscarCategoria.MaxLength = 50;
             this.txtBuscarCategoria.Name = "txtBuscarCategoria";
-            this.txtBuscarCategoria.Size = new System.Drawing.Size(227, 25);
-            this.txtBuscarCategoria.TabIndex = 1;
+            this.txtBuscarCategoria.Size = new System.Drawing.Size(250, 25);
+            this.txtBuscarCategoria.TabIndex = 0;
             this.txtBuscarCategoria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarCategoria_KeyDown);
             // 
             // tlpBuscarMarca
@@ -88,7 +88,7 @@
             this.tlpBuscarMarca.RowCount = 2;
             this.tlpBuscarMarca.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tlpBuscarMarca.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpBuscarMarca.Size = new System.Drawing.Size(227, 55);
+            this.tlpBuscarMarca.Size = new System.Drawing.Size(250, 55);
             this.tlpBuscarMarca.TabIndex = 6;
             // 
             // lblBuscarCategoria
@@ -100,7 +100,7 @@
             this.lblBuscarCategoria.Location = new System.Drawing.Point(0, 0);
             this.lblBuscarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.lblBuscarCategoria.Name = "lblBuscarCategoria";
-            this.lblBuscarCategoria.Size = new System.Drawing.Size(227, 17);
+            this.lblBuscarCategoria.Size = new System.Drawing.Size(250, 17);
             this.lblBuscarCategoria.TabIndex = 0;
             this.lblBuscarCategoria.Text = "Buscar por nombre";
             this.lblBuscarCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -114,7 +114,7 @@
             this.lblTituloCategoria.Location = new System.Drawing.Point(10, 10);
             this.lblTituloCategoria.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             this.lblTituloCategoria.Name = "lblTituloCategoria";
-            this.lblTituloCategoria.Size = new System.Drawing.Size(1179, 21);
+            this.lblTituloCategoria.Size = new System.Drawing.Size(1011, 21);
             this.lblTituloCategoria.TabIndex = 0;
             this.lblTituloCategoria.Text = "Gestión de categorías";
             this.lblTituloCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,13 +126,13 @@
             this.tlpListadoCategoria.Controls.Add(this.tlpEncabezadoListado, 0, 0);
             this.tlpListadoCategoria.Controls.Add(this.dgvCategoria, 0, 1);
             this.tlpListadoCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpListadoCategoria.Location = new System.Drawing.Point(13, 144);
+            this.tlpListadoCategoria.Location = new System.Drawing.Point(13, 145);
             this.tlpListadoCategoria.Name = "tlpListadoCategoria";
             this.tlpListadoCategoria.Padding = new System.Windows.Forms.Padding(10);
             this.tlpListadoCategoria.RowCount = 2;
             this.tlpListadoCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpListadoCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpListadoCategoria.Size = new System.Drawing.Size(1173, 481);
+            this.tlpListadoCategoria.Size = new System.Drawing.Size(1005, 733);
             this.tlpListadoCategoria.TabIndex = 2;
             // 
             // tlpEncabezadoListado
@@ -145,11 +145,11 @@
             this.tlpEncabezadoListado.Controls.Add(this.flpBotonesAcciones, 1, 0);
             this.tlpEncabezadoListado.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpEncabezadoListado.Location = new System.Drawing.Point(10, 10);
-            this.tlpEncabezadoListado.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.tlpEncabezadoListado.Margin = new System.Windows.Forms.Padding(0, 0, 0, 13);
             this.tlpEncabezadoListado.Name = "tlpEncabezadoListado";
             this.tlpEncabezadoListado.RowCount = 1;
             this.tlpEncabezadoListado.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpEncabezadoListado.Size = new System.Drawing.Size(1153, 40);
+            this.tlpEncabezadoListado.Size = new System.Drawing.Size(985, 44);
             this.tlpEncabezadoListado.TabIndex = 0;
             // 
             // lblListadoCategoria
@@ -160,7 +160,7 @@
             this.lblListadoCategoria.ForeColor = System.Drawing.Color.Black;
             this.lblListadoCategoria.Location = new System.Drawing.Point(3, 0);
             this.lblListadoCategoria.Name = "lblListadoCategoria";
-            this.lblListadoCategoria.Size = new System.Drawing.Size(847, 40);
+            this.lblListadoCategoria.Size = new System.Drawing.Size(673, 44);
             this.lblListadoCategoria.TabIndex = 0;
             this.lblListadoCategoria.Text = "Listado de categorías";
             this.lblListadoCategoria.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,10 +173,10 @@
             this.flpBotonesAcciones.Controls.Add(this.btnAgregarCategoria);
             this.flpBotonesAcciones.Controls.Add(this.btnEditarCategoria);
             this.flpBotonesAcciones.Controls.Add(this.btnEliminarCategoria);
-            this.flpBotonesAcciones.Location = new System.Drawing.Point(853, 0);
+            this.flpBotonesAcciones.Location = new System.Drawing.Point(679, 0);
             this.flpBotonesAcciones.Margin = new System.Windows.Forms.Padding(0);
             this.flpBotonesAcciones.Name = "flpBotonesAcciones";
-            this.flpBotonesAcciones.Size = new System.Drawing.Size(300, 40);
+            this.flpBotonesAcciones.Size = new System.Drawing.Size(306, 44);
             this.flpBotonesAcciones.TabIndex = 1;
             this.flpBotonesAcciones.WrapContents = false;
             // 
@@ -184,11 +184,11 @@
             // 
             this.btnAgregarCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.btnAgregarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnAgregarCategoria.Location = new System.Drawing.Point(5, 5);
-            this.btnAgregarCategoria.Margin = new System.Windows.Forms.Padding(5);
+            this.btnAgregarCategoria.Location = new System.Drawing.Point(6, 7);
+            this.btnAgregarCategoria.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnAgregarCategoria.Name = "btnAgregarCategoria";
             this.btnAgregarCategoria.Size = new System.Drawing.Size(90, 30);
-            this.btnAgregarCategoria.TabIndex = 0;
+            this.btnAgregarCategoria.TabIndex = 2;
             this.btnAgregarCategoria.Text = "Agregar";
             this.btnAgregarCategoria.UseVisualStyleBackColor = false;
             this.btnAgregarCategoria.Click += new System.EventHandler(this.btnAgregarCategoria_Click);
@@ -197,8 +197,8 @@
             // 
             this.btnEditarCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.btnEditarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnEditarCategoria.Location = new System.Drawing.Point(105, 5);
-            this.btnEditarCategoria.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEditarCategoria.Location = new System.Drawing.Point(108, 7);
+            this.btnEditarCategoria.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnEditarCategoria.Name = "btnEditarCategoria";
             this.btnEditarCategoria.Size = new System.Drawing.Size(90, 30);
             this.btnEditarCategoria.TabIndex = 1;
@@ -210,11 +210,11 @@
             // 
             this.btnEliminarCategoria.BackColor = System.Drawing.Color.LightCoral;
             this.btnEliminarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.btnEliminarCategoria.Location = new System.Drawing.Point(205, 5);
-            this.btnEliminarCategoria.Margin = new System.Windows.Forms.Padding(5);
+            this.btnEliminarCategoria.Location = new System.Drawing.Point(210, 7);
+            this.btnEliminarCategoria.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnEliminarCategoria.Name = "btnEliminarCategoria";
             this.btnEliminarCategoria.Size = new System.Drawing.Size(90, 30);
-            this.btnEliminarCategoria.TabIndex = 2;
+            this.btnEliminarCategoria.TabIndex = 0;
             this.btnEliminarCategoria.Text = "Eliminar";
             this.btnEliminarCategoria.UseVisualStyleBackColor = false;
             this.btnEliminarCategoria.Click += new System.EventHandler(this.btnEliminarCategoria_Click);
@@ -223,19 +223,21 @@
             // 
             this.dgvCategoria.AllowUserToAddRows = false;
             this.dgvCategoria.AllowUserToDeleteRows = false;
+            this.dgvCategoria.AllowUserToResizeColumns = false;
+            this.dgvCategoria.AllowUserToResizeRows = false;
             this.dgvCategoria.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCategoria.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCategoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCategoria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCategoria.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvCategoria.GridColor = System.Drawing.Color.LightGray;
-            this.dgvCategoria.Location = new System.Drawing.Point(13, 63);
+            this.dgvCategoria.Location = new System.Drawing.Point(13, 70);
+            this.dgvCategoria.MultiSelect = false;
             this.dgvCategoria.Name = "dgvCategoria";
             this.dgvCategoria.ReadOnly = true;
-            this.dgvCategoria.RowHeadersVisible = false;
             this.dgvCategoria.RowTemplate.Height = 28;
             this.dgvCategoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCategoria.Size = new System.Drawing.Size(1147, 405);
+            this.dgvCategoria.Size = new System.Drawing.Size(979, 650);
             this.dgvCategoria.TabIndex = 1;
             // 
             // lblOrdenarCategoria
@@ -266,8 +268,8 @@
             this.cmbOrdenarCategoria.Location = new System.Drawing.Point(0, 25);
             this.cmbOrdenarCategoria.Margin = new System.Windows.Forms.Padding(0);
             this.cmbOrdenarCategoria.Name = "cmbOrdenarCategoria";
-            this.cmbOrdenarCategoria.Size = new System.Drawing.Size(223, 25);
-            this.cmbOrdenarCategoria.TabIndex = 3;
+            this.cmbOrdenarCategoria.Size = new System.Drawing.Size(250, 25);
+            this.cmbOrdenarCategoria.TabIndex = 0;
             // 
             // tlpOrdenarCategoria
             // 
@@ -278,13 +280,13 @@
             this.tlpOrdenarCategoria.Controls.Add(this.lblOrdenarCategoria, 0, 0);
             this.tlpOrdenarCategoria.Controls.Add(this.cmbOrdenarCategoria, 0, 1);
             this.tlpOrdenarCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.tlpOrdenarCategoria.Location = new System.Drawing.Point(267, 10);
+            this.tlpOrdenarCategoria.Location = new System.Drawing.Point(290, 10);
             this.tlpOrdenarCategoria.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.tlpOrdenarCategoria.Name = "tlpOrdenarCategoria";
             this.tlpOrdenarCategoria.RowCount = 2;
             this.tlpOrdenarCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tlpOrdenarCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tlpOrdenarCategoria.Size = new System.Drawing.Size(223, 55);
+            this.tlpOrdenarCategoria.Size = new System.Drawing.Size(250, 55);
             this.tlpOrdenarCategoria.TabIndex = 7;
             // 
             // btnLimpiarFiltrosCategoria
@@ -292,10 +294,10 @@
             this.btnLimpiarFiltrosCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.btnLimpiarFiltrosCategoria.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.btnLimpiarFiltrosCategoria.ForeColor = System.Drawing.Color.Black;
-            this.btnLimpiarFiltrosCategoria.Location = new System.Drawing.Point(130, 3);
+            this.btnLimpiarFiltrosCategoria.Location = new System.Drawing.Point(129, 3);
             this.btnLimpiarFiltrosCategoria.Name = "btnLimpiarFiltrosCategoria";
             this.btnLimpiarFiltrosCategoria.Size = new System.Drawing.Size(120, 30);
-            this.btnLimpiarFiltrosCategoria.TabIndex = 5;
+            this.btnLimpiarFiltrosCategoria.TabIndex = 1;
             this.btnLimpiarFiltrosCategoria.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosCategoria.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltrosCategoria.Click += new System.EventHandler(this.btnLimpiarFiltrosCategoria_Click);
@@ -308,8 +310,8 @@
             this.btnAplicarFiltrosCategoria.ForeColor = System.Drawing.Color.Black;
             this.btnAplicarFiltrosCategoria.Location = new System.Drawing.Point(3, 3);
             this.btnAplicarFiltrosCategoria.Name = "btnAplicarFiltrosCategoria";
-            this.btnAplicarFiltrosCategoria.Size = new System.Drawing.Size(121, 30);
-            this.btnAplicarFiltrosCategoria.TabIndex = 4;
+            this.btnAplicarFiltrosCategoria.Size = new System.Drawing.Size(120, 30);
+            this.btnAplicarFiltrosCategoria.TabIndex = 0;
             this.btnAplicarFiltrosCategoria.Text = "Aplicar filtros";
             this.btnAplicarFiltrosCategoria.UseVisualStyleBackColor = false;
             this.btnAplicarFiltrosCategoria.Click += new System.EventHandler(this.btnAplicarFiltrosCategoria_Click);
@@ -323,13 +325,13 @@
             this.tlpBotonesFiltros.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpBotonesFiltros.Controls.Add(this.btnLimpiarFiltrosCategoria, 1, 0);
             this.tlpBotonesFiltros.Controls.Add(this.btnAplicarFiltrosCategoria, 0, 0);
-            this.tlpBotonesFiltros.Location = new System.Drawing.Point(402, 18);
+            this.tlpBotonesFiltros.Location = new System.Drawing.Point(194, 18);
             this.tlpBotonesFiltros.Margin = new System.Windows.Forms.Padding(0);
             this.tlpBotonesFiltros.Name = "tlpBotonesFiltros";
             this.tlpBotonesFiltros.RowCount = 1;
             this.tlpBotonesFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpBotonesFiltros.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpBotonesFiltros.Size = new System.Drawing.Size(254, 36);
+            this.tlpBotonesFiltros.Size = new System.Drawing.Size(252, 36);
             this.tlpBotonesFiltros.TabIndex = 0;
             // 
             // panelBotonesFiltros
@@ -338,10 +340,10 @@
             this.panelBotonesFiltros.Controls.Add(this.tlpBotonesFiltros);
             this.panelBotonesFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelBotonesFiltros.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            this.panelBotonesFiltros.Location = new System.Drawing.Point(500, 10);
+            this.panelBotonesFiltros.Location = new System.Drawing.Point(550, 10);
             this.panelBotonesFiltros.Margin = new System.Windows.Forms.Padding(0);
             this.panelBotonesFiltros.Name = "panelBotonesFiltros";
-            this.panelBotonesFiltros.Size = new System.Drawing.Size(669, 70);
+            this.panelBotonesFiltros.Size = new System.Drawing.Size(451, 70);
             this.panelBotonesFiltros.TabIndex = 8;
             // 
             // tlpFiltrosCategoria
@@ -361,7 +363,7 @@
             this.tlpFiltrosCategoria.Padding = new System.Windows.Forms.Padding(10);
             this.tlpFiltrosCategoria.RowCount = 1;
             this.tlpFiltrosCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpFiltrosCategoria.Size = new System.Drawing.Size(1179, 90);
+            this.tlpFiltrosCategoria.Size = new System.Drawing.Size(1011, 90);
             this.tlpFiltrosCategoria.TabIndex = 3;
             // 
             // tlpContenedorCategoria
@@ -377,19 +379,22 @@
             this.tlpContenedorCategoria.Padding = new System.Windows.Forms.Padding(10);
             this.tlpContenedorCategoria.RowCount = 3;
             this.tlpContenedorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContenedorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tlpContenedorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tlpContenedorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpContenedorCategoria.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpContenedorCategoria.Size = new System.Drawing.Size(1199, 638);
+            this.tlpContenedorCategoria.Size = new System.Drawing.Size(1031, 891);
             this.tlpContenedorCategoria.TabIndex = 1;
             // 
             // UCCategorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.Controls.Add(this.tlpContenedorCategoria);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "UCCategorias";
-            this.Size = new System.Drawing.Size(1199, 638);
+            this.Size = new System.Drawing.Size(1031, 891);
             this.tlpBuscarMarca.ResumeLayout(false);
             this.tlpBuscarMarca.PerformLayout();
             this.tlpListadoCategoria.ResumeLayout(false);

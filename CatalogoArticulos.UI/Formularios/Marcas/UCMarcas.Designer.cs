@@ -195,17 +195,18 @@
             // 
             this.dgvMarcas.AllowUserToAddRows = false;
             this.dgvMarcas.AllowUserToDeleteRows = false;
+            this.dgvMarcas.AllowUserToResizeColumns = false;
+            this.dgvMarcas.AllowUserToResizeRows = false;
             this.dgvMarcas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvMarcas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvMarcas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMarcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMarcas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMarcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvMarcas.GridColor = System.Drawing.Color.LightGray;
             this.dgvMarcas.Location = new System.Drawing.Point(13, 63);
+            this.dgvMarcas.MultiSelect = false;
             this.dgvMarcas.Name = "dgvMarcas";
             this.dgvMarcas.ReadOnly = true;
-            this.dgvMarcas.RowHeadersVisible = false;
             this.dgvMarcas.RowTemplate.Height = 28;
             this.dgvMarcas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMarcas.Size = new System.Drawing.Size(979, 658);
@@ -267,7 +268,7 @@
             this.btnLimpiarFiltrosMarca.Location = new System.Drawing.Point(129, 3);
             this.btnLimpiarFiltrosMarca.Name = "btnLimpiarFiltrosMarca";
             this.btnLimpiarFiltrosMarca.Size = new System.Drawing.Size(120, 30);
-            this.btnLimpiarFiltrosMarca.TabIndex = 5;
+            this.btnLimpiarFiltrosMarca.TabIndex = 1;
             this.btnLimpiarFiltrosMarca.Text = "Limpiar filtros";
             this.btnLimpiarFiltrosMarca.UseVisualStyleBackColor = false;
             this.btnLimpiarFiltrosMarca.Click += new System.EventHandler(this.btnLimpiarFiltrosMarca_Click);
@@ -279,7 +280,7 @@
             this.btnAplicarFiltrosMarca.Location = new System.Drawing.Point(3, 3);
             this.btnAplicarFiltrosMarca.Name = "btnAplicarFiltrosMarca";
             this.btnAplicarFiltrosMarca.Size = new System.Drawing.Size(120, 30);
-            this.btnAplicarFiltrosMarca.TabIndex = 4;
+            this.btnAplicarFiltrosMarca.TabIndex = 0;
             this.btnAplicarFiltrosMarca.Text = "Aplicar filtros";
             this.btnAplicarFiltrosMarca.UseVisualStyleBackColor = false;
             this.btnAplicarFiltrosMarca.Click += new System.EventHandler(this.btnAplicarFiltrosMarca_Click);
@@ -325,7 +326,7 @@
             this.cmbOrdenarMarca.Margin = new System.Windows.Forms.Padding(0);
             this.cmbOrdenarMarca.Name = "cmbOrdenarMarca";
             this.cmbOrdenarMarca.Size = new System.Drawing.Size(250, 25);
-            this.cmbOrdenarMarca.TabIndex = 3;
+            this.cmbOrdenarMarca.TabIndex = 0;
             // 
             // tlpBuscarMarca
             // 
@@ -366,7 +367,7 @@
             this.txtBuscarMarca.MaxLength = 50;
             this.txtBuscarMarca.Name = "txtBuscarMarca";
             this.txtBuscarMarca.Size = new System.Drawing.Size(250, 25);
-            this.txtBuscarMarca.TabIndex = 1;
+            this.txtBuscarMarca.TabIndex = 0;
             this.txtBuscarMarca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscarMarca_KeyDown);
             // 
             // UCMarcas

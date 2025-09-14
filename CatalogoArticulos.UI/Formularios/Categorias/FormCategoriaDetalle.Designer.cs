@@ -127,6 +127,7 @@
             this.ClientSize = new System.Drawing.Size(448, 159);
             this.Controls.Add(this.tlpCategoriaDetalle);
             this.Name = "FormCategoriaDetalle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCategoriaDetalle";
             this.Load += new System.EventHandler(this.FormCategoriaDetalle_Load);
             this.tlpCategoriaDetalle.ResumeLayout(false);

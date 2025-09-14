@@ -66,6 +66,26 @@ namespace CatalogoArticulos.Negocio
             }
         }
 
+
+        public int EjecutarAccionEscalar()
+        {
+            comando.Connection = conexion;
+            try
+            {
+                if (conexion.State != ConnectionState.Open)
+                {
+                    // valido primero si ya está abierta para que no la vuelva a abrir
+                    comando.Connection.Open();
+                }
+                object id = comando.ExecuteScalar();
+                return (int)id;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public void CerrarConexion()
         {
             if (lector != null)

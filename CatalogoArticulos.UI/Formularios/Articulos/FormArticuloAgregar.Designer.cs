@@ -122,7 +122,7 @@
             this.tlpCamposArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpCamposArticulo.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpCamposArticulo.Size = new System.Drawing.Size(519, 492);
-            this.tlpCamposArticulo.TabIndex = 12;
+            this.tlpCamposArticulo.TabIndex = 0;
             // 
             // lblCodigoArticulo
             // 
@@ -154,7 +154,7 @@
             this.tbCodigoArticulo.MaxLength = 50;
             this.tbCodigoArticulo.Name = "tbCodigoArticulo";
             this.tbCodigoArticulo.Size = new System.Drawing.Size(377, 29);
-            this.tbCodigoArticulo.TabIndex = 3;
+            this.tbCodigoArticulo.TabIndex = 0;
             // 
             // lblPrecioArticulo
             // 
@@ -189,7 +189,7 @@
             this.cmbCategoriaArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 20, 5);
             this.cmbCategoriaArticulo.Name = "cmbCategoriaArticulo";
             this.cmbCategoriaArticulo.Size = new System.Drawing.Size(377, 29);
-            this.cmbCategoriaArticulo.TabIndex = 9;
+            this.cmbCategoriaArticulo.TabIndex = 4;
             // 
             // tbNombreArticulo
             // 
@@ -199,7 +199,7 @@
             this.tbNombreArticulo.MaxLength = 50;
             this.tbNombreArticulo.Name = "tbNombreArticulo";
             this.tbNombreArticulo.Size = new System.Drawing.Size(377, 29);
-            this.tbNombreArticulo.TabIndex = 4;
+            this.tbNombreArticulo.TabIndex = 1;
             // 
             // lblCategoriaArticulo
             // 
@@ -234,7 +234,7 @@
             this.tbDescripcionArticulo.Multiline = true;
             this.tbDescripcionArticulo.Name = "tbDescripcionArticulo";
             this.tbDescripcionArticulo.Size = new System.Drawing.Size(377, 72);
-            this.tbDescripcionArticulo.TabIndex = 5;
+            this.tbDescripcionArticulo.TabIndex = 2;
             // 
             // lblMarcaArticulo
             // 
@@ -257,7 +257,7 @@
             this.cmbMarcaArticulo.Margin = new System.Windows.Forms.Padding(0, 5, 20, 5);
             this.cmbMarcaArticulo.Name = "cmbMarcaArticulo";
             this.cmbMarcaArticulo.Size = new System.Drawing.Size(377, 29);
-            this.cmbMarcaArticulo.TabIndex = 8;
+            this.cmbMarcaArticulo.TabIndex = 3;
             // 
             // btnGuardarArticulo
             // 
@@ -265,7 +265,7 @@
             this.btnGuardarArticulo.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnGuardarArticulo.Name = "btnGuardarArticulo";
             this.btnGuardarArticulo.Size = new System.Drawing.Size(120, 30);
-            this.btnGuardarArticulo.TabIndex = 1;
+            this.btnGuardarArticulo.TabIndex = 0;
             this.btnGuardarArticulo.Text = "Guardar";
             this.btnGuardarArticulo.UseVisualStyleBackColor = true;
             this.btnGuardarArticulo.Click += new System.EventHandler(this.btnGuardarArticulo_Click);
@@ -276,7 +276,7 @@
             this.btnCancelarArticulo.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnCancelarArticulo.Name = "btnCancelarArticulo";
             this.btnCancelarArticulo.Size = new System.Drawing.Size(120, 30);
-            this.btnCancelarArticulo.TabIndex = 2;
+            this.btnCancelarArticulo.TabIndex = 1;
             this.btnCancelarArticulo.Text = "Cancelar";
             this.btnCancelarArticulo.UseVisualStyleBackColor = true;
             this.btnCancelarArticulo.Click += new System.EventHandler(this.btnCancelarArticulo_Click);

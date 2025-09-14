@@ -188,7 +188,7 @@
             this.cmbCampoArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCampoArticulo.Name = "cmbCampoArticulo";
             this.cmbCampoArticulo.Size = new System.Drawing.Size(220, 25);
-            this.cmbCampoArticulo.TabIndex = 3;
+            this.cmbCampoArticulo.TabIndex = 0;
             this.cmbCampoArticulo.SelectedIndexChanged += new System.EventHandler(this.cmbCampoArticulo_SelectedIndexChanged);
             // 
             // cmbCriterioArticulo
@@ -205,7 +205,7 @@
             this.cmbCriterioArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.cmbCriterioArticulo.Name = "cmbCriterioArticulo";
             this.cmbCriterioArticulo.Size = new System.Drawing.Size(220, 25);
-            this.cmbCriterioArticulo.TabIndex = 4;
+            this.cmbCriterioArticulo.TabIndex = 1;
             // 
             // txtValorArticulo
             // 
@@ -214,7 +214,7 @@
             this.txtValorArticulo.MaxLength = 50;
             this.txtValorArticulo.Name = "txtValorArticulo";
             this.txtValorArticulo.Size = new System.Drawing.Size(220, 25);
-            this.txtValorArticulo.TabIndex = 5;
+            this.txtValorArticulo.TabIndex = 2;
             // 
             // flpBotonesFiltrosArticulo
             // 
@@ -306,7 +306,7 @@
             this.btnEliminarArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.btnEliminarArticulo.Name = "btnEliminarArticulo";
             this.btnEliminarArticulo.Size = new System.Drawing.Size(90, 30);
-            this.btnEliminarArticulo.TabIndex = 0;
+            this.btnEliminarArticulo.TabIndex = 2;
             this.btnEliminarArticulo.Text = "Eliminar";
             this.btnEliminarArticulo.UseVisualStyleBackColor = false;
             this.btnEliminarArticulo.Click += new System.EventHandler(this.btnEliminarArticulo_Click);
@@ -328,7 +328,7 @@
             this.btnAgregarArticulo.Margin = new System.Windows.Forms.Padding(5);
             this.btnAgregarArticulo.Name = "btnAgregarArticulo";
             this.btnAgregarArticulo.Size = new System.Drawing.Size(90, 30);
-            this.btnAgregarArticulo.TabIndex = 2;
+            this.btnAgregarArticulo.TabIndex = 0;
             this.btnAgregarArticulo.Text = "Agregar";
             this.btnAgregarArticulo.UseVisualStyleBackColor = true;
             this.btnAgregarArticulo.Click += new System.EventHandler(this.btnAgregarArticulo_Click);
@@ -353,6 +353,7 @@
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvArticulos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvArticulos.GridColor = System.Drawing.Color.LightGray;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 43);
             this.dgvArticulos.MultiSelect = false;
             this.dgvArticulos.Name = "dgvArticulos";
